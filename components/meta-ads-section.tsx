@@ -54,11 +54,16 @@ export function MetaAdsSection() {
             Meta Ads
           </h2>
 
-          <Card className="mb-6">
+          <Card
+            className="mb-6 group overflow-hidden gap-0"
+            tabIndex={0}
+          >
             <CardHeader>
               <CardTitle className="text-primary">¿Qué es Meta Ads?</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent
+              className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4"
+            >
               <p className="text-white leading-relaxed">
                 Es la plataforma de publicidad de Facebook e Instagram, que te
                 permite mostrar anuncios en el feed, stories, reels y más, a las
@@ -68,18 +73,23 @@ export function MetaAdsSection() {
             </CardContent>
           </Card>
 
-          <Card className="mb-6">
+          <Card
+            className="mb-6 group overflow-hidden gap-0"
+            tabIndex={0}
+          >
             <CardHeader>
               <CardTitle className="text-primary">
                 ¿Cómo se puede segmentar mi campaña?
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent
+              className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4"
+            >
               <p className="text-white mb-4">Podés elegir tu público según:</p>
               <ul className="space-y-2">
                 {segmentation.map((item, index) => (
                   <li key={index} className="flex gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                     <span className="text-white">{item}</span>
                   </li>
                 ))}
@@ -87,17 +97,22 @@ export function MetaAdsSection() {
             </CardContent>
           </Card>
 
-          <Card className="mb-6">
+          <Card
+            className="mb-6 group overflow-hidden gap-0"
+            tabIndex={0}
+          >
             <CardHeader>
               <CardTitle className="text-primary">
                 ¿Qué necesito para poder publicar?
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent
+              className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4"
+            >
               <ul className="space-y-2">
                 {requirements.map((item, index) => (
                   <li key={index} className="flex gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                     <span className="text-white">{item}</span>
                   </li>
                 ))}
@@ -107,13 +122,19 @@ export function MetaAdsSection() {
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <Card key={index}>
+              <Card
+                key={index}
+                className="group overflow-hidden gap-0"
+                tabIndex={0}
+              >
                 <CardHeader>
                   <CardTitle className="text-lg text-primary">
                     {faq.question}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent
+                  className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4"
+                >
                   <p className="text-white leading-relaxed">{faq.answer}</p>
                 </CardContent>
               </Card>

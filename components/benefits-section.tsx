@@ -68,11 +68,12 @@ export function BenefitsSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 ">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 items-start ">
           {benefits.map((benefit, index) => (
             <Card
               key={index}
-              className="border-2 hover:border-primary transition-colors"
+              className="border-2 hover:border-primary transition-colors group overflow-hidden self-start"
+              tabIndex={0}
             >
               <CardContent className="pt-6">
                 <div className="flex items-center justify-center gap-2 mb-4">
@@ -82,9 +83,13 @@ export function BenefitsSection() {
                   </h3>
                 </div>
 
-                <p className="text-white leading-relaxed">
-                  {benefit.description}
-                </p>
+                <div
+                  className="overflow-hidden transition-[max-height,opacity,transform] duration-300 max-h-0 opacity-0 translate-y-1 group-hover:max-h-40 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:max-h-40 group-focus-within:opacity-100 group-focus-within:translate-y-0"
+                >
+                  <p className="text-white leading-relaxed">
+                    {benefit.description}
+                  </p>
+                </div>
               </CardContent>
             </Card>
           ))}
