@@ -5,7 +5,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { Check, X } from "lucide-react";
+import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function PricingSection() {
@@ -35,7 +35,7 @@ export function PricingSection() {
         "Para negocios que ya tienen redes pero quieren atraer clientes.",
       features: [
         "Todo lo del Pack Presencia",
-        "Publicidad en Meta Ads o TikTok Ads (1 plataforma a elección)",
+        "Publicidad en Meta Ads (1 plataforma a elección)",
         "Filmmaker (1 producción de video corto al mes para anuncios)",
         "Reporte mensual con métricas de campaña (CTR, leads, conversiones)",
       ],
@@ -50,7 +50,7 @@ export function PricingSection() {
       features: [
         "Community Manager (gestión avanzada + planificación estratégica)",
         "Filmmaker (2–3 producciones de video al mes)",
-        "Publicidad en Meta Ads y TikTok Ads",
+        "Publicidad en Meta Ads (multi-campaña)",
         "Análisis de métricas + reportes detallados con recomendaciones",
         "Optimización continua de campañas",
       ],
@@ -70,65 +70,6 @@ export function PricingSection() {
       ],
       ideal:
         'Para empresas que quieren que vos seas su "equipo de marketing externo".',
-    },
-  ];
-
-  const comparisonFeatures = [
-    {
-      name: "Community Manager",
-      presencia: true,
-      ads: true,
-      growth: true,
-      premium: true,
-    },
-    {
-      name: "Edición de artes",
-      presencia: true,
-      ads: true,
-      growth: true,
-      premium: true,
-    },
-    {
-      name: "Reportes mensuales",
-      presencia: true,
-      ads: true,
-      growth: true,
-      premium: true,
-    },
-    {
-      name: "Meta Ads",
-      presencia: false,
-      ads: true,
-      growth: true,
-      premium: true,
-    },
-    {
-      name: "TikTok Ads",
-      presencia: false,
-      ads: false,
-      growth: true,
-      premium: true,
-    },
-    {
-      name: "Filmmaker",
-      presencia: false,
-      ads: "1/mes",
-      growth: "2-3/mes",
-      premium: "Ilimitado",
-    },
-    {
-      name: "Consultoría estratégica",
-      presencia: false,
-      ads: false,
-      growth: false,
-      premium: true,
-    },
-    {
-      name: "Integración Analytics",
-      presencia: false,
-      ads: false,
-      growth: false,
-      premium: true,
     },
   ];
 
@@ -172,7 +113,7 @@ export function PricingSection() {
                   <ul className="space-y-3 mb-6">
                     {pkg.features.map((feature, idx) => (
                       <li key={idx} className="flex gap-2 text-sm">
-                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                        <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -198,79 +139,6 @@ export function PricingSection() {
             ))}
           </div>
 
-          {/* Comparison Table */}
-          <Card className="overflow-x-auto p-0 gap-0">
-            <h3 className="text-2xl  my-4 text-center text-white">
-              Comparativa de Paquetes
-            </h3>
-            <table className="w-full overflow-hidden">
-              <thead className="bg-primary text-white border">
-                <tr>
-                  <th className="px-4 py-3 text-left">Características</th>
-                  <th className="px-4 py-3 text-center">Presencia</th>
-                  <th className="px-4 py-3 text-center">Ads</th>
-                  <th className="px-4 py-3 text-center">Growth</th>
-                  <th className="px-4 py-3 text-center">Premium</th>
-                </tr>
-              </thead>
-              <tbody className="border overflow-hidden">
-                {comparisonFeatures.map((feature, index) => (
-                  <tr
-                    key={index}
-                    className={`${
-                      index % 2 === 0 ? "bg-card" : "bg-foreground"
-                    } overflow-hidden`}
-                  >
-                    <td className="px-4 py-3 font-medium">{feature.name}</td>
-                    <td className="px-4 py-3 text-center">
-                      {typeof feature.presencia === "boolean" ? (
-                        feature.presencia ? (
-                          <Check className="h-5 w-5 text-primary mx-auto" />
-                        ) : (
-                          <X className="h-5 w-5 text-gray-300 mx-auto" />
-                        )
-                      ) : (
-                        <span className="text-sm">{feature.presencia}</span>
-                      )}
-                    </td>
-                    <td className="px-4 py-3 text-center">
-                      {typeof feature.ads === "boolean" ? (
-                        feature.ads ? (
-                          <Check className="h-5 w-5 text-primary mx-auto" />
-                        ) : (
-                          <X className="h-5 w-5 text-gray-300 mx-auto" />
-                        )
-                      ) : (
-                        <span className="text-sm">{feature.ads}</span>
-                      )}
-                    </td>
-                    <td className="px-4 py-3 text-center">
-                      {typeof feature.growth === "boolean" ? (
-                        feature.growth ? (
-                          <Check className="h-5 w-5 text-primary mx-auto" />
-                        ) : (
-                          <X className="h-5 w-5 text-gray-300 mx-auto" />
-                        )
-                      ) : (
-                        <span className="text-sm">{feature.growth}</span>
-                      )}
-                    </td>
-                    <td className="px-4 py-3 text-center">
-                      {typeof feature.premium === "boolean" ? (
-                        feature.premium ? (
-                          <Check className="h-5 w-5 text-primary mx-auto" />
-                        ) : (
-                          <X className="h-5 w-5 text-gray-300 mx-auto" />
-                        )
-                      ) : (
-                        <span className="text-sm">{feature.premium}</span>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </Card>
         </div>
       </div>
     </section>

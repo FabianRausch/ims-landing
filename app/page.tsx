@@ -3,10 +3,8 @@ import { HeroSection } from "@/components/hero-section";
 import { ProblemSection } from "@/components/problem-section";
 import { BenefitsSection } from "@/components/benefits-section";
 import { MetaAdsSection } from "@/components/meta-ads-section";
-import { TikTokAdsSection } from "@/components/tiktok-ads-section";
 import { CommunityManagerSection } from "@/components/community-manager-section";
 import { PricingSection } from "@/components/pricing-section";
-import { TestimonialsSection } from "@/components/testimonials-section";
 import { ProcessSection } from "@/components/process-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
@@ -39,7 +37,6 @@ export default function Home() {
       </SectionWrapper>
 
       <MetaAdsSection />
-      <TikTokAdsSection />
 
       <SectionWrapper
         background={
@@ -54,20 +51,6 @@ export default function Home() {
       >
         <CommunityManagerSection />
         <PricingSection />
-      </SectionWrapper>
-
-      <SectionWrapper
-        background={
-          <BackgroundWorld
-            maxHeight="1000px"
-            maxWidth="1000px"
-            left="-300px"
-            top="100px"
-            side="left"
-          />
-        }
-      >
-        <TestimonialsSection />
       </SectionWrapper>
 
       <ProcessSection />

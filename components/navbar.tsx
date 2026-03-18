@@ -19,11 +19,9 @@ export function Navbar() {
 
   const navLinks = [
     { href: "/#meta-ads", label: "META ADS" },
-    { href: "/#tiktok-ads", label: "TIKTOK ADS" },
     { href: "/#community-manager", label: "COMMUNITY MANAGER" },
     { href: "/#combos", label: "COMBOS" },
     { href: "/#proceso", label: "PROCESO" },
-    { href: "/#testimonios", label: "TESTIMONIOS" },
     { href: "/#contacto", label: "CONTACTO" },
   ];
 

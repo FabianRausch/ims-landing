@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Impulso Marketing Studio",
   description: "Creamos estrategias de marketing a medida para tu negocio",
   generator:
-    "Impulso Marketing Studio | Agencia de Marketing Digital | Marketing Digital | Marketing en Redes Sociales | Marketing en Google | Marketing en TikTok | Marketing en Meta | Marketing en Instagram | Marketing en Facebook | Marketing en YouTube | Marketing en WhatsApp",
+    "Impulso Marketing Studio | Agencia de Marketing Digital | Marketing Digital | Marketing en Redes Sociales | Marketing en Google | Marketing en Meta | Marketing en Instagram | Marketing en Facebook | Marketing en YouTube | Marketing en WhatsApp",
 };
 
 export default function RootLayout({
