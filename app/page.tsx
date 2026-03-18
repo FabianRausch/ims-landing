@@ -9,7 +9,6 @@ import { ProcessSection } from "@/components/process-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 import { SectionWrapper } from "@/components/section-wrapper";
-import { BackgroundLines } from "@/components/background-lines";
 import { BackgroundWorld } from "@/components/background-world";
 import { BackgroundWorld2 } from "@/components/background-word-2";
 
@@ -30,7 +29,7 @@ export default function Home() {
       >
         <HeroSection />
 
-        <SectionWrapper background={<BackgroundLines top="200px" />}>
+        <SectionWrapper>
           <ProblemSection />
           <BenefitsSection />
         </SectionWrapper>
