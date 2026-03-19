@@ -102,7 +102,7 @@ export function BenefitsSection() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-center gap-2 mb-4">
                     <benefit.icon className="h-10 w-10 text-primary" />
-                    <h3 className="text-xl font-bold text-primary">
+                    <h3 className="text-xl font-bold text-white">
                       {benefit.title}
                     </h3>
                   </div>
@@ -163,7 +163,7 @@ export function BenefitsSection() {
                       <CardContent className="pt-6">
                         <div className="flex items-center justify-center gap-2 mb-4">
                           <benefit.icon className="h-10 w-10 text-primary" />
-                          <h3 className="text-xl font-bold text-primary text-center">
+                          <h3 className="text-xl font-bold text-white text-center">
                             {benefit.title}
                           </h3>
                         </div>

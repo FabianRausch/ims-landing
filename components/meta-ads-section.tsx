@@ -75,7 +75,7 @@ export function MetaAdsSection() {
             o servicios.
           </p>
         ),
-        titleClassName: "text-primary",
+        titleClassName: "text-white",
       },
       {
         key: "segment",
@@ -93,7 +93,7 @@ export function MetaAdsSection() {
             </ul>
           </>
         ),
-        titleClassName: "text-primary",
+        titleClassName: "text-white",
       },
       {
         key: "requirements",
@@ -108,13 +108,13 @@ export function MetaAdsSection() {
             ))}
           </ul>
         ),
-        titleClassName: "text-primary",
+        titleClassName: "text-white",
       },
       ...faqs.map((faq) => ({
         key: `faq-${faq.question}`,
         title: faq.question,
         body: <p className="text-white leading-relaxed">{faq.answer}</p>,
-        titleClassName: "text-lg text-primary",
+        titleClassName: "text-lg text-white",
       })),
     ];
   }, [faqs, requirements, segmentation]);
@@ -143,7 +143,7 @@ export function MetaAdsSection() {
           <div className="hidden md:block">
             <Card className="mb-6 group overflow-hidden gap-0" tabIndex={0}>
               <CardHeader>
-                <CardTitle className="text-primary">¿Qué es Meta Ads?</CardTitle>
+                <CardTitle className="text-white">¿Qué es Meta Ads?</CardTitle>
               </CardHeader>
               <CardContent className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4">
                 <p className="text-white leading-relaxed">
@@ -157,7 +157,7 @@ export function MetaAdsSection() {
 
             <Card className="mb-6 group overflow-hidden gap-0" tabIndex={0}>
               <CardHeader>
-                <CardTitle className="text-primary">
+                <CardTitle className="text-white">
                   ¿Cómo se puede segmentar mi campaña?
                 </CardTitle>
               </CardHeader>
@@ -176,7 +176,7 @@ export function MetaAdsSection() {
 
             <Card className="mb-6 group overflow-hidden gap-0" tabIndex={0}>
               <CardHeader>
-                <CardTitle className="text-primary">
+                <CardTitle className="text-white">
                   ¿Qué necesito para poder publicar?
                 </CardTitle>
               </CardHeader>
@@ -200,7 +200,7 @@ export function MetaAdsSection() {
                   tabIndex={0}
                 >
                   <CardHeader>
-                    <CardTitle className="text-lg text-primary">
+                    <CardTitle className="text-lg text-white">
                       {faq.question}
                     </CardTitle>
                   </CardHeader>

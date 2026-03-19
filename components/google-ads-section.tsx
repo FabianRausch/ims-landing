@@ -76,7 +76,7 @@ export function GoogleAdsSection() {
             personas en el momento exacto en que buscan lo que ofrecés.
           </p>
         ),
-        titleClassName: "text-primary",
+        titleClassName: "text-white",
       },
       {
         key: "segment",
@@ -97,7 +97,7 @@ export function GoogleAdsSection() {
             </ul>
           </>
         ),
-        titleClassName: "text-primary",
+        titleClassName: "text-white",
       },
       {
         key: "requirements",
@@ -112,13 +112,13 @@ export function GoogleAdsSection() {
             ))}
           </ul>
         ),
-        titleClassName: "text-primary",
+        titleClassName: "text-white",
       },
       ...faqs.map((faq) => ({
         key: `faq-${faq.question}`,
         title: faq.question,
         body: <p className="text-white leading-relaxed">{faq.answer}</p>,
-        titleClassName: "text-lg text-primary",
+        titleClassName: "text-lg text-white",
       })),
     ];
   }, [faqs, requirements, segmentation]);
@@ -147,7 +147,7 @@ export function GoogleAdsSection() {
           <div className="hidden md:block">
             <Card className="mb-6 group overflow-hidden gap-0" tabIndex={0}>
               <CardHeader>
-                <CardTitle className="text-primary">
+                <CardTitle className="text-white">
                   ¿Qué es Google Ads?
                 </CardTitle>
               </CardHeader>
@@ -163,7 +163,7 @@ export function GoogleAdsSection() {
 
             <Card className="mb-6 group overflow-hidden gap-0" tabIndex={0}>
               <CardHeader>
-                <CardTitle className="text-primary">
+                <CardTitle className="text-white">
                   ¿Cómo se puede segmentar mi campaña?
                 </CardTitle>
               </CardHeader>
@@ -185,7 +185,7 @@ export function GoogleAdsSection() {
 
             <Card className="mb-6 group overflow-hidden gap-0" tabIndex={0}>
               <CardHeader>
-                <CardTitle className="text-primary">
+                <CardTitle className="text-white">
                   ¿Qué necesito para poder publicar?
                 </CardTitle>
               </CardHeader>
@@ -209,7 +209,7 @@ export function GoogleAdsSection() {
                   tabIndex={0}
                 >
                   <CardHeader>
-                    <CardTitle className="text-lg text-primary">
+                    <CardTitle className="text-lg text-white">
                       {faq.question}
                     </CardTitle>
                   </CardHeader>

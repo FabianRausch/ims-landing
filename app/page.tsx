@@ -9,6 +9,7 @@ import { PricingSection } from "@/components/pricing-section";
 import { ProcessSection } from "@/components/process-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
+import { WhatsappButton } from "@/components/whatsapp-button";
 import { SectionWrapper } from "@/components/section-wrapper";
 import { BackgroundWorld } from "@/components/background-world";
 import { BackgroundWorld2 } from "@/components/background-word-2";
@@ -39,7 +40,7 @@ export default function Home() {
       <MetaAdsSection />
       <GoogleAdsSection />
 
-      <div className="relative z-[53]">
+      <div className="relative z-53">
         <SectionWrapper
           background={
             <BackgroundWorld2
@@ -59,6 +60,7 @@ export default function Home() {
         <ContactSection />
         <Footer />
       </div>
+      <WhatsappButton />
     </main>
   );
 }
