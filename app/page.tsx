@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/hero-section";
 import { ProblemSection } from "@/components/problem-section";
 import { BenefitsSection } from "@/components/benefits-section";
 import { MetaAdsSection } from "@/components/meta-ads-section";
+import { GoogleAdsSection } from "@/components/google-ads-section";
 import { CommunityManagerSection } from "@/components/community-manager-section";
 import { PricingSection } from "@/components/pricing-section";
 import { ProcessSection } from "@/components/process-section";
@@ -36,25 +37,28 @@ export default function Home() {
       </SectionWrapper>
 
       <MetaAdsSection />
+      <GoogleAdsSection />
 
-      <SectionWrapper
-        background={
-          <BackgroundWorld2
-            maxHeight="900px"
-            maxWidth="900px"
-            left="0"
-            top="0"
-            side="right"
-          />
-        }
-      >
-        <CommunityManagerSection />
-        <PricingSection />
-      </SectionWrapper>
+      <div className="relative z-[53]">
+        <SectionWrapper
+          background={
+            <BackgroundWorld2
+              maxHeight="900px"
+              maxWidth="900px"
+              left="0"
+              top="0"
+              side="right"
+            />
+          }
+        >
+          <CommunityManagerSection />
+          <PricingSection />
+        </SectionWrapper>
 
-      <ProcessSection />
-      <ContactSection />
-      <Footer />
+        <ProcessSection />
+        <ContactSection />
+        <Footer />
+      </div>
     </main>
   );
 }

@@ -19,6 +19,7 @@ export function Navbar() {
 
   const navLinks = [
     { href: "/#meta-ads", label: "META ADS" },
+    { href: "/#google-ads", label: "GOOGLE ADS" },
     { href: "/#community-manager", label: "COMMUNITY MANAGER" },
     { href: "/#combos", label: "COMBOS" },
     { href: "/#proceso", label: "PROCESO" },
@@ -27,7 +28,7 @@ export function Navbar() {
 
   return (
     <nav
-      className={`text-white fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`text-white fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
         isScrolled
           ? "bg-foreground backdrop-blur-sm shadow-md"
           : "bg-transparent"
