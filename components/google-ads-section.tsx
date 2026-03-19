@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
 
@@ -14,7 +13,7 @@ export function GoogleAdsSection() {
       "Remarketing: Mostrar anuncios a quienes ya visitaron tu web o usaron tu app.",
       "Segmentos de intención: Personas que están investigando activamente para comprar un producto.",
     ],
-    []
+    [],
   );
 
   const requirements = useMemo(
@@ -23,7 +22,7 @@ export function GoogleAdsSection() {
       "Un sitio web o una página de aterrizaje (landing page) a donde dirigir el tráfico.",
       "Un método de pago válido configurado en la plataforma (tarjeta de crédito/débito o cuenta bancaria, según el país).",
     ],
-    []
+    [],
   );
 
   const faqs = useMemo(
@@ -46,7 +45,7 @@ export function GoogleAdsSection() {
       {
         question: "¿Qué pasa si mi presupuesto es bajo?",
         answer:
-          "Si el presupuesto es muy ajustado, tu anuncio dejará de aparecer cuando se agote el dinero del día. En mercados muy competitivos (donde el clic es caro), podrías recibir pocas visitas, pero si elegís palabras clave muy específicas (\"de nicho\"), podés tener un retorno excelente.",
+          'Si el presupuesto es muy ajustado, tu anuncio dejará de aparecer cuando se agote el dinero del día. En mercados muy competitivos (donde el clic es caro), podrías recibir pocas visitas, pero si elegís palabras clave muy específicas ("de nicho"), podés tener un retorno excelente.',
       },
       {
         question: "¿Cómo se realizan los pagos en Google Ads?",
@@ -54,14 +53,8 @@ export function GoogleAdsSection() {
           "Los pagos se gestionan desde la sección de Facturación. Dependiendo de tu país, podés pagar de forma automática (se debita de tu tarjeta tras acumular gastos) o manual (cargás saldo previamente mediante tarjeta, transferencia o proveedores locales).",
       },
     ],
-    []
+    [],
   );
-
-  const mobileDeckRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: mobileDeckRef,
-    offset: ["start start", "end end"],
-  });
 
   const mobileCards = useMemo(() => {
     return [
@@ -71,9 +64,9 @@ export function GoogleAdsSection() {
         body: (
           <p className="text-white leading-relaxed">
             Es la plataforma de publicidad de Google que permite mostrar
-            anuncios en los resultados de búsqueda, en sitios web asociados
-            (Red de Display), en YouTube, Gmail y Maps. Te conecta con
-            personas en el momento exacto en que buscan lo que ofrecés.
+            anuncios en los resultados de búsqueda, en sitios web asociados (Red
+            de Display), en YouTube, Gmail y Maps. Te conecta con personas en el
+            momento exacto en que buscan lo que ofrecés.
           </p>
         ),
         titleClassName: "text-white",
@@ -123,21 +116,12 @@ export function GoogleAdsSection() {
     ];
   }, [faqs, requirements, segmentation]);
 
-  const n = mobileCards.length;
-  const PEEK = 50;
-  const CARD_EXPANDED_H = 400;
-  const [activeIndex, setActiveIndex] = useState(0);
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    const idx = Math.round(v * Math.max(n - 1, 1));
-    setActiveIndex(Math.max(0, Math.min(idx, n - 1)));
-  });
-
   return (
     <section
       id="google-ads"
-      className="py-16 md:py-24 section-bg-default relative z-[52]"
+      className="py-16 md:py-24 section-bg-alternate relative z-50"
     >
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-white">
             Google Ads
@@ -154,9 +138,10 @@ export function GoogleAdsSection() {
               <CardContent className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4">
                 <p className="text-white leading-relaxed">
                   Es la plataforma de publicidad de Google que permite mostrar
-                  anuncios en los resultados de búsqueda, en sitios web asociados
-                  (Red de Display), en YouTube, Gmail y Maps. Te conecta con
-                  personas en el momento exacto en que buscan lo que ofrecés.
+                  anuncios en los resultados de búsqueda, en sitios web
+                  asociados (Red de Display), en YouTube, Gmail y Maps. Te
+                  conecta con personas en el momento exacto en que buscan lo que
+                  ofrecés.
                 </p>
               </CardContent>
             </Card>
@@ -221,72 +206,17 @@ export function GoogleAdsSection() {
             </div>
           </div>
 
-          {/* Mobile: stacked deck controlled by scroll */}
-          <div
-            ref={mobileDeckRef}
-            className="md:hidden relative mb-12"
-            style={{ height: `${n * 50}vh` }}
-          >
-            <div className="sticky top-24 pb-8">
-              <div
-                className="relative w-full max-w-4xl mx-auto px-0"
-                style={{ minHeight: (n - 1) * PEEK + CARD_EXPANDED_H }}
-              >
-                {mobileCards.map((card, index) => {
-                  const isPast = index < activeIndex;
-                  const isFuture = index > activeIndex;
-                  const isActive = index === activeIndex;
-
-                  const y = isPast
-                    ? index * PEEK
-                    : activeIndex * PEEK;
-
-                  return (
-                    <motion.div
-                      key={card.key}
-                      initial={false}
-                      animate={{
-                        y,
-                        opacity: isFuture ? 0 : 1,
-                        scale: isPast ? 0.97 : 1,
-                      }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 260,
-                        damping: 30,
-                      }}
-                      style={{
-                        position: "absolute",
-                        left: 0,
-                        right: 0,
-                        top: 0,
-                        zIndex: isPast ? 10 + index : isActive ? 50 : 5,
-                        pointerEvents: isFuture ? "none" : "auto",
-                      }}
-                    >
-                      <Card className="border-2 overflow-hidden">
-                        <CardHeader>
-                          <CardTitle className={card.titleClassName}>
-                            {card.title}
-                          </CardTitle>
-                        </CardHeader>
-                        <motion.div
-                          initial={false}
-                          animate={{
-                            opacity: isActive ? 1 : 0,
-                            maxHeight: isActive ? 320 : 0,
-                          }}
-                          transition={{ duration: 0.25 }}
-                          style={{ overflow: "hidden" }}
-                        >
-                          <CardContent>{card.body}</CardContent>
-                        </motion.div>
-                      </Card>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
+          <div className="md:hidden space-y-4 mb-12">
+            {mobileCards.map((card) => (
+              <Card key={card.key} className="border-2 overflow-hidden">
+                <CardHeader>
+                  <CardTitle className={card.titleClassName}>
+                    {card.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>{card.body}</CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </div>

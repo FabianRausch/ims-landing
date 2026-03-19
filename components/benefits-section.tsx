@@ -122,7 +122,9 @@ export function BenefitsSection() {
         <div
           ref={mobileDeckRef}
           className="md:hidden relative"
-          style={{ height: `${n * 50}vh` }}
+          style={{
+            height: `${n * 50}vh`,
+          }}
         >
           <div className="sticky top-24 pb-8">
             <div
@@ -167,20 +169,9 @@ export function BenefitsSection() {
                             {benefit.title}
                           </h3>
                         </div>
-
-                        <motion.div
-                          initial={false}
-                          animate={{
-                            opacity: isActive ? 1 : 0,
-                            maxHeight: isActive ? 260 : 0,
-                          }}
-                          transition={{ duration: 0.25 }}
-                          style={{ overflow: "hidden" }}
-                        >
-                          <p className="text-white leading-relaxed">
-                            {benefit.description}
-                          </p>
-                        </motion.div>
+                        <p className="text-white leading-relaxed">
+                          {benefit.description}
+                        </p>
                       </CardContent>
                     </Card>
                   </motion.div>

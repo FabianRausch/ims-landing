@@ -40,7 +40,7 @@ export default function Home() {
       <MetaAdsSection />
       <GoogleAdsSection />
 
-      <div className="relative z-53">
+      <div className="relative">
         <SectionWrapper
           background={
             <BackgroundWorld2
