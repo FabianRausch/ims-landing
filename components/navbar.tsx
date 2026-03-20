@@ -48,24 +48,10 @@ export function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium hover:text-orange-500 transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-
           {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -74,7 +60,7 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden p-4 space-y-2 bg-card border rounded-lg shadow-sm absolute top-16 right-4">
+          <div className="p-4 space-y-2 bg-card border rounded-lg shadow-sm absolute top-16 right-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
