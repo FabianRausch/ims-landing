@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 export function PricingSection() {
   const whatsappNumber = "1234567890";
   const whatsappMessage = encodeURIComponent(
-    "Hola! Me interesa conocer más sobre sus paquetes de servicios."
+    "Hola! Me interesa conocer más sobre sus paquetes de servicios.",
   );
 
   const packages = [
@@ -74,10 +74,7 @@ export function PricingSection() {
   ];
 
   return (
-    <section
-      id="combos"
-      className="py-16 md:py-24 section-bg-alternate"
-    >
+    <section id="combos" className="py-16 md:py-24 section-bg-alternate">
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-white ">
@@ -96,7 +93,7 @@ export function PricingSection() {
                 }`}
               >
                 {pkg.highlighted && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-bold">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold">
                     Más Popular
                   </div>
                 )}
@@ -138,7 +135,6 @@ export function PricingSection() {
               </Card>
             ))}
           </div>
-
         </div>
       </div>
     </section>

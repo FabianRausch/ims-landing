@@ -1,9 +1,12 @@
 "use client";
 
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  MobileStickyDeck,
+  type StickyDeckRenderState,
+} from "@/components/mobile-sticky-deck";
 import {
   Target,
   DollarSign,
@@ -62,24 +65,48 @@ export function BenefitsSection() {
     [],
   );
 
-  const n = benefits.length;
-  const PEEK = 50;
-  const CARD_EXPANDED_H = 300;
-  const mobileDeckRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: mobileDeckRef,
-    offset: ["start start", "end end"],
-  });
-
-  const [activeIndex, setActiveIndex] = useState(0);
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    const idx = Math.round(v * Math.max(n - 1, 1));
-    setActiveIndex(Math.max(0, Math.min(idx, n - 1)));
-  });
+  const mobileDeckItems = useMemo(
+    () =>
+      benefits.map((benefit, index) => ({
+        key: `benefit-${index}`,
+        render: ({ isPast }: StickyDeckRenderState) => {
+          if (isPast) {
+            return (
+              <Card className="border-2 shadow-md bg-card/95 backdrop-blur-sm rounded-lg py-0! gap-0">
+                <CardContent className="px-3 py-2">
+                  <div className="flex items-center gap-2 min-h-0">
+                    <benefit.icon className="h-7 w-7 text-primary shrink-0" />
+                    <h3 className="text-xs font-bold text-white text-left line-clamp-2 leading-tight">
+                      {benefit.title}
+                    </h3>
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          }
+          return (
+            <Card className="border-2 shadow-lg max-h-[78vh] overflow-y-auto bg-card py-0! gap-0">
+              <CardContent className="px-6 py-6">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <benefit.icon className="h-10 w-10 text-primary shrink-0" />
+                  <h3 className="text-xl font-bold text-white text-center">
+                    {benefit.title}
+                  </h3>
+                </div>
+                <p className="text-white leading-relaxed">
+                  {benefit.description}
+                </p>
+              </CardContent>
+            </Card>
+          );
+        },
+      })),
+    [benefits],
+  );
 
   return (
     <section className="py-10 section-bg-default">
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance text-white ">
             Alcance relevante
@@ -118,67 +145,14 @@ export function BenefitsSection() {
           </div>
         </div>
 
-        {/* Mobile: stacked cards on scroll (deck) */}
-        <div
-          ref={mobileDeckRef}
-          className="md:hidden relative"
-          style={{
-            height: `${n * 50}vh`,
-          }}
-        >
-          <div className="sticky top-24 pb-8">
-            <div
-              className="relative w-full max-w-3xl mx-auto"
-              style={{ minHeight: (n - 1) * PEEK + CARD_EXPANDED_H }}
-            >
-              {benefits.map((benefit, index) => {
-                const isPast = index < activeIndex;
-                const isFuture = index > activeIndex;
-                const isActive = index === activeIndex;
-
-                const y = isPast
-                  ? index * PEEK
-                  : isActive
-                    ? activeIndex * PEEK
-                    : activeIndex * PEEK;
-
-                return (
-                  <motion.div
-                    key={index}
-                    initial={false}
-                    animate={{
-                      y,
-                      scale: isPast ? 0.97 : 1,
-                      opacity: isFuture ? 0 : 1,
-                    }}
-                    transition={{ type: "spring", stiffness: 260, damping: 30 }}
-                    style={{
-                      position: "absolute",
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      zIndex: isPast ? 10 + index : isActive ? 50 : 5,
-                      pointerEvents: isFuture ? "none" : "auto",
-                    }}
-                  >
-                    <Card className="border-2 hover:border-primary transition-colors overflow-hidden">
-                      <CardContent className="pt-6">
-                        <div className="flex items-center justify-center gap-2 mb-4">
-                          <benefit.icon className="h-10 w-10 text-primary" />
-                          <h3 className="text-xl font-bold text-white text-center">
-                            {benefit.title}
-                          </h3>
-                        </div>
-                        <p className="text-white leading-relaxed">
-                          {benefit.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
+        {/* Mobile: sticky scroll deck */}
+        <div className="md:hidden">
+          <MobileStickyDeck
+            items={mobileDeckItems}
+            peekPx={40}
+            expandedMinHeightPx={300}
+            vhPerCard={40}
+          />
         </div>
 
         <div className="text-center">

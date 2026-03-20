@@ -4,12 +4,12 @@ import { ArrowRight } from "lucide-react";
 export function HeroSection() {
   const whatsappNumber = process.env.NEXT_PUBLIC_CONTACT_WHATSAPP; // Replace with actual number
   const whatsappMessage = encodeURIComponent(
-    "Hola! Me gustaría recibir asesoría gratuita sobre sus servicios de marketing."
+    "Hola! Me gustaría recibir asesoría gratuita sobre sus servicios de marketing.",
   );
 
   return (
     <section id="start" className="pt-24 pb-16 section-bg-hero">
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 text-balance">
             Visibiliza tu marca/empresa en Redes Sociales y Google

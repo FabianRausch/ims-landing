@@ -3,6 +3,10 @@
 import { useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
+import {
+  MobileStickyDeck,
+  type StickyDeckRenderState,
+} from "@/components/mobile-sticky-deck";
 
 export function MetaAdsSection() {
   const segmentation = useMemo(
@@ -112,10 +116,43 @@ export function MetaAdsSection() {
     ];
   }, [faqs, requirements, segmentation]);
 
+  const mobileDeckItems = useMemo(
+    () =>
+      mobileCards.map((card) => ({
+        key: card.key,
+        render: ({ isPast }: StickyDeckRenderState) => {
+          if (isPast) {
+            return (
+              <Card className="border-2 shadow-md bg-card/95 backdrop-blur-sm rounded-lg !py-0 gap-0">
+                <CardHeader className="space-y-0 py-2 px-3 !py-2">
+                  <CardTitle
+                    className={`${card.titleClassName ?? "text-white"} text-xs sm:text-sm font-semibold leading-tight line-clamp-2`}
+                  >
+                    {card.title}
+                  </CardTitle>
+                </CardHeader>
+              </Card>
+            );
+          }
+          return (
+            <Card className="border-2 shadow-lg max-h-[78vh] overflow-y-auto bg-card !py-0 gap-0">
+              <CardHeader className="px-6 pt-6 pb-2">
+                <CardTitle className={card.titleClassName ?? "text-white"}>
+                  {card.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pb-6">{card.body}</CardContent>
+            </Card>
+          );
+        },
+      })),
+    [mobileCards],
+  );
+
   return (
     <section
       id="meta-ads"
-      className="py-16 md:py-24 section-bg-alternate relative z-50"
+      className="py-16 md:py-24 section-bg-alternate scroll-mt-24"
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
@@ -125,7 +162,7 @@ export function MetaAdsSection() {
 
           {/* Desktop: hover expand */}
           <div className="hidden md:block">
-            <Card className="mb-6 group overflow-hidden gap-0" tabIndex={0}>
+            <Card className="mb-6 group overflow-hidden gap-0">
               <CardHeader>
                 <CardTitle className="text-white">¿Qué es Meta Ads?</CardTitle>
               </CardHeader>
@@ -139,7 +176,7 @@ export function MetaAdsSection() {
               </CardContent>
             </Card>
 
-            <Card className="mb-6 group overflow-hidden gap-0" tabIndex={0}>
+            <Card className="mb-6 group overflow-hidden gap-0">
               <CardHeader>
                 <CardTitle className="text-white">
                   ¿Cómo se puede segmentar mi campaña?
@@ -198,18 +235,15 @@ export function MetaAdsSection() {
             </div>
           </div>
 
-          {/* Mobile: normal vertical cards */}
-          <div className="md:hidden space-y-4 mb-12">
-            {mobileCards.map((card) => (
-              <Card key={card.key} className="border-2 overflow-hidden">
-                <CardHeader>
-                  <CardTitle className={card.titleClassName}>
-                    {card.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>{card.body}</CardContent>
-              </Card>
-            ))}
+          {/* Mobile: sticky scroll deck */}
+          <div className="md:hidden">
+            <MobileStickyDeck
+              items={mobileDeckItems}
+              peekPx={40}
+              expandedMinHeightPx={380}
+              vhPerCard={34}
+              innerClassName="max-w-4xl mx-auto"
+            />
           </div>
         </div>
       </div>
