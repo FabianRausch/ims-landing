@@ -10,6 +10,12 @@ import { Navbar } from "@/components/navbar";
 export const metadata: Metadata = {
   title: "Impulso Marketing Studio",
   description: "Creamos estrategias de marketing a medida para tu negocio",
+  /** Favicon desde /public (evita el loader de `app/icon.png` que en dev a veces devuelve 500) */
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
   generator:
     "Impulso Marketing Studio | Agencia de Marketing Digital | Marketing Digital | Marketing en Redes Sociales | Marketing en Google | Marketing en Meta | Marketing en Instagram | Marketing en Facebook | Marketing en YouTube | Marketing en WhatsApp",
 };
