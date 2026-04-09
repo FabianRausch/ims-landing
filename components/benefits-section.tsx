@@ -91,12 +91,12 @@ export function BenefitsSection() {
                 key={index}
                 className="self-start"
                 header={
-                  <div className="flex w-full items-start gap-3">
+                  <div className="flex w-full flex-col items-center gap-3">
                     <benefit.icon
                       className="h-10 w-10 shrink-0 text-primary-on-light"
                       aria-hidden
                     />
-                    <CardTitle className="min-w-0 flex-1 text-left text-xl text-card-foreground">
+                    <CardTitle className="text-balance text-xl text-card-foreground">
                       {benefit.title}
                     </CardTitle>
                   </div>

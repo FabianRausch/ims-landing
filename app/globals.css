@@ -31,7 +31,8 @@
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --border: var(--main-color);
-  --input: oklch(0.622 0 0);
+  /* Bordes de campos: gris muy claro (antes oklch 0.622 se veía “sucio” sobre blanco) */
+  --input: oklch(0.91 0.008 350);
   --ring: var(--main-color);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -152,5 +153,24 @@ html {
   }
   body {
     @apply bg-foreground text-background;
+  }
+
+  /* Fondo blanco real + autofill (Chrome/Safari pintan gris/amarillo por defecto) */
+  [data-slot="input"]:not([type="checkbox"]):not([type="radio"]):not([type="file"]):enabled,
+  [data-slot="textarea"]:enabled {
+    background-color: #ffffff !important;
+    color: var(--card-foreground);
+    color-scheme: light;
+  }
+
+  [data-slot="input"]:-webkit-autofill,
+  [data-slot="input"]:-webkit-autofill:hover,
+  [data-slot="input"]:-webkit-autofill:focus,
+  [data-slot="textarea"]:-webkit-autofill,
+  [data-slot="textarea"]:-webkit-autofill:hover,
+  [data-slot="textarea"]:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--card-foreground);
+    box-shadow: inset 0 0 0 1000px #ffffff !important;
+    transition: background-color 5000s ease-in-out 0s;
   }
 }

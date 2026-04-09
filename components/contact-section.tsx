@@ -38,7 +38,7 @@ export function ContactSection() {
             ¿Listo para impulsar tu negocio? Dejanos tus datos y te contactamos
           </p>
 
-          <Card>
+          <Card className="border-primary/15 bg-white shadow-md">
             <CardHeader>
               <CardTitle>Solicitar información</CardTitle>
             </CardHeader>

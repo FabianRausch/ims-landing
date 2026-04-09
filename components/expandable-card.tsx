@@ -9,6 +9,7 @@ import {
 } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { ChevronDown } from "lucide-react";
 
 const MD_UP = "(min-width: 768px)";
 
@@ -81,12 +82,12 @@ export function ExpandableCard({
         className,
       )}
     >
-      <CardHeader className="flex flex-col items-stretch gap-2 space-y-0 pb-2 text-left">
-        {header}
+      <CardHeader className="flex flex-col items-center gap-2 space-y-0 pb-2">
+        <div className="w-full text-center">{header}</div>
         {!open && !isDesktop ? (
-          <p className="text-center text-sm font-medium text-primary-on-light">
-            Ver más
-          </p>
+          <div className="flex justify-center" aria-hidden>
+            <ChevronDown className="h-5 w-5 text-primary-on-light" />
+          </div>
         ) : null}
       </CardHeader>
       <CardContent
