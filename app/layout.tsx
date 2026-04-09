@@ -37,11 +37,7 @@ export default function RootLayout({
         <header>
           <Navbar />
         </header>
-        <main
-          id="main-content"
-          tabIndex={-1}
-          className="min-h-screen outline-none"
-        >
+        <main id="main-content" className="min-h-screen">
           {children}
           <WhatsappButton />
         </main>
