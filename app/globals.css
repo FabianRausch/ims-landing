@@ -41,10 +41,7 @@
   
   /* Section background variables - Centralized for easy management */
   --section-bg-default: var(--foreground);
-  --section-bg-hero: linear-gradient(180deg, var(--main-color), var(--foreground));
   --section-bg-alternate: linear-gradient(180deg, var(--foreground), var(--main-color), var(--foreground));
-  --section-bg-image-opacity: 0.15;
-  --section-bg-overlay: rgba(255, 255, 255, 0.12);
 }
 
 /* .dark {
@@ -135,75 +132,8 @@ html {
   background-color: var(--section-bg-default);
 }
 
-.section-bg-hero {
-  background: var(--section-bg-hero);
-}
-
 .section-bg-alternate {
   background: var(--section-bg-alternate);
-}
-
-/* Background with image overlay support */
-.section-bg-with-image {
-  position: relative;
-  background-color: var(--section-bg-default);
-}
-
-.section-bg-with-image::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: var(--section-bg-image, none);
-  background-size: var(--section-bg-image-size, cover);
-  background-position: var(--section-bg-image-position, center);
-  background-repeat: var(--section-bg-image-repeat, no-repeat);
-  opacity: var(--section-bg-image-opacity);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.section-bg-with-image > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Legacy gradient classes - maintained for backward compatibility */
-.gradient-orange-inverse {
-  background: linear-gradient(180deg, var(--foreground), var(--main-color));
-}
-
-.gradient-orange {
-  background: var(--section-bg-hero);
-}
-
-.gradient-orange-subtle {
-  background: var(--section-bg-alternate);
-}
-
-@layer utilities {
-  .text-neon {
-    text-shadow: 0 0 3px var(--main-color), 0 0 5px var(--main-color),
-      0 0 10px var(--main-color), 0 0 20px var(--main-color),
-      0 0 40px var(--main-color);
-  }
-}
-
-@layer utilities {
-  @keyframes neonPulse {
-    0%,
-    100% {
-      text-shadow: 0 0 5px var(--main-color), 0 0 10px var(--main-color),
-        0 0 20px var(--main-color), 0 0 40px var(--main-color);
-    }
-    50% {
-      text-shadow: 0 0 2px var(--main-color), 0 0 5px var(--main-color),
-        0 0 10px var(--main-color), 0 0 20px var(--main-color);
-    }
-  }
-
-  . {
-    animation: neonPulse 2.5s ease-in-out infinite;
-  }
 }
 
 @layer base {
@@ -212,6 +142,5 @@ html {
   }
   body {
     @apply bg-foreground text-background;
-    /* @apply bg-background text-foreground; */
   }
 }
