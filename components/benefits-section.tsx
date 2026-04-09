@@ -4,10 +4,6 @@ import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  MobileStickyDeck,
-  type StickyDeckRenderState,
-} from "@/components/mobile-sticky-deck";
-import {
   Target,
   DollarSign,
   Zap,
@@ -65,45 +61,6 @@ export function BenefitsSection() {
     [],
   );
 
-  const mobileDeckItems = useMemo(
-    () =>
-      benefits.map((benefit, index) => ({
-        key: `benefit-${index}`,
-        render: ({ isPast }: StickyDeckRenderState) => {
-          if (isPast) {
-            return (
-              <Card className="border-2 shadow-md bg-card/95 backdrop-blur-sm rounded-lg py-0! gap-0">
-                <CardContent className="px-3 py-2">
-                  <div className="flex items-center gap-2 min-h-0">
-                    <benefit.icon className="h-7 w-7 text-primary-on-light shrink-0" />
-                    <h3 className="text-xs font-bold text-card-foreground text-left line-clamp-2 leading-tight">
-                      {benefit.title}
-                    </h3>
-                  </div>
-                </CardContent>
-              </Card>
-            );
-          }
-          return (
-            <Card className="border-2 shadow-lg max-h-[78vh] overflow-y-auto bg-card py-0! gap-0">
-              <CardContent className="px-6 py-6">
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <benefit.icon className="h-10 w-10 text-primary-on-light shrink-0" />
-                  <h3 className="text-xl font-bold text-card-foreground text-center">
-                    {benefit.title}
-                  </h3>
-                </div>
-                <p className="text-card-foreground leading-relaxed">
-                  {benefit.description}
-                </p>
-              </CardContent>
-            </Card>
-          );
-        },
-      })),
-    [benefits],
-  );
-
   return (
     <section className="py-10 section-bg-default">
       <div className="container mx-auto px-4">
@@ -118,12 +75,12 @@ export function BenefitsSection() {
           </p>
         </div>
 
-        {/* Desktop: cards expand on hover */}
-        <div className="hidden md:block">
+        <div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 items-start">
             {benefits.map((benefit, index) => (
               <Card
                 key={index}
+                tabIndex={0}
                 className="border-2 hover:border-primary transition-colors group overflow-hidden self-start"
               >
                 <CardContent className="pt-6">
@@ -143,16 +100,6 @@ export function BenefitsSection() {
               </Card>
             ))}
           </div>
-        </div>
-
-        {/* Mobile: sticky scroll deck */}
-        <div className="md:hidden">
-          <MobileStickyDeck
-            items={mobileDeckItems}
-            peekPx={40}
-            expandedMinHeightPx={300}
-            vhPerCard={40}
-          />
         </div>
 
         <div className="text-center">
