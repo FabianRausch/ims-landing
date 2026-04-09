@@ -1,21 +1,14 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +17,20 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isOpen]);
 
   const navLinks = [
     { href: "/#meta-ads", label: "META ADS" },
@@ -60,24 +67,15 @@ export function Navbar() {
             </span>
           </Link>
 
-          {/*
-            modal={false} evita que Radix use aria-hidden en nav/main/footer
-            (conflicto con focusables como el CTA de WhatsApp en <main>).
-          */}
-          {/*
-            Sin DialogTrigger: con modal={false}, un clic en el mismo botón
-            disparaba cierre por “outside” + toggle del trigger y el menú se reabría.
-          */}
-          <Dialog open={isOpen} onOpenChange={setIsOpen} modal={false}>
+          <div className="relative">
             <Button
-              ref={menuButtonRef}
               type="button"
               variant="ghost"
               size="icon"
               className="cursor-pointer"
               aria-expanded={isOpen}
               aria-controls={mobileMenuId}
-              aria-haspopup="dialog"
+              aria-haspopup="true"
               aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
               onClick={() => setIsOpen((open) => !open)}
             >
@@ -89,49 +87,37 @@ export function Navbar() {
             </Button>
 
             {isOpen ? (
-              <button
-                type="button"
-                tabIndex={-1}
-                aria-hidden
-                className="fixed inset-x-0 bottom-0 top-16 md:top-20 z-[105] bg-black/40 cursor-default border-0 p-0"
-                onClick={() => setIsOpen(false)}
-              />
+              <>
+                <button
+                  type="button"
+                  tabIndex={-1}
+                  aria-hidden
+                  className="fixed inset-x-0 bottom-0 top-16 md:top-20 z-[105] cursor-default border-0 bg-black/40 p-0"
+                  onClick={() => setIsOpen(false)}
+                />
+                <div
+                  id={mobileMenuId}
+                  role="region"
+                  aria-label="Enlaces del sitio"
+                  className="fixed top-16 right-4 left-auto z-[110] w-full max-w-[min(280px,calc(100vw-2rem))] rounded-lg border border-border bg-card p-4 text-card-foreground shadow-lg sm:max-w-xs"
+                >
+                  <ul className="m-0 list-none space-y-2 p-0">
+                    {navLinks.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="block py-2 text-sm font-medium text-black transition-colors hover:text-primary"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </>
             ) : null}
-
-            <DialogContent
-              id={mobileMenuId}
-              showCloseButton={false}
-              className={cn(
-                "!fixed top-16 right-4 left-auto z-[110] max-w-[min(280px,calc(100vw-2rem))] w-full !translate-x-0 !translate-y-0 gap-0 p-4 sm:max-w-xs",
-                "border bg-card text-card-foreground shadow-lg rounded-lg",
-              )}
-              onInteractOutside={(event) => {
-                if (
-                  menuButtonRef.current?.contains(event.target as Node)
-                ) {
-                  event.preventDefault();
-                }
-              }}
-            >
-              <DialogTitle className="sr-only">Menú de navegación</DialogTitle>
-              <DialogDescription className="sr-only">
-                Enlaces a las secciones principales del sitio.
-              </DialogDescription>
-              <ul className="space-y-2 list-none p-0 m-0">
-                {navLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="block py-2 text-sm font-medium text-black hover:text-primary transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </DialogContent>
-          </Dialog>
+          </div>
         </div>
       </div>
     </nav>
