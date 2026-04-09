@@ -2,7 +2,18 @@
 
 import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  ExpandableChevron,
+  ExpandableHint,
+  expandableCardClassName,
+  expandableCardHeaderClassName,
+} from "@/components/expandable-card-cues";
 import {
   Target,
   DollarSign,
@@ -73,6 +84,9 @@ export function BenefitsSection() {
             con la segmentación correcta para que el algoritmo llegue a quien te
             busca.
           </p>
+          <p className="text-sm text-muted-foreground mt-4 max-w-lg mx-auto">
+            Tocá o pasá el cursor sobre cada tarjeta para ver el detalle.
+          </p>
         </div>
 
         <div>
@@ -81,21 +95,27 @@ export function BenefitsSection() {
               <Card
                 key={index}
                 tabIndex={0}
-                className="border-2 hover:border-primary transition-colors group overflow-hidden self-start"
+                className={`self-start ${expandableCardClassName}`}
               >
-                <CardContent className="pt-6">
-                  <div className="flex items-center justify-center gap-2 mb-4">
-                    <benefit.icon className="h-10 w-10 text-primary-on-light" />
-                    <h3 className="text-xl font-bold text-card-foreground">
-                      {benefit.title}
-                    </h3>
+                <CardHeader className={`${expandableCardHeaderClassName} pb-0`}>
+                  <div className="flex min-w-0 flex-1 items-start gap-3">
+                    <benefit.icon
+                      className="h-10 w-10 shrink-0 text-primary-on-light"
+                      aria-hidden
+                    />
+                    <div className="min-w-0 text-left">
+                      <CardTitle className="text-xl text-card-foreground">
+                        {benefit.title}
+                      </CardTitle>
+                      <ExpandableHint />
+                    </div>
                   </div>
-
-                  <div className="overflow-hidden transition-[max-height,opacity,transform] duration-300 max-h-0 opacity-0 translate-y-1 group-hover:max-h-40 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:max-h-40 group-focus-within:opacity-100 group-focus-within:translate-y-0">
-                    <p className="text-card-foreground leading-relaxed">
-                      {benefit.description}
-                    </p>
-                  </div>
+                  <ExpandableChevron className="mt-0.5 shrink-0" />
+                </CardHeader>
+                <CardContent className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 pb-6 group-hover:max-h-48 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-3 group-focus-within:max-h-48 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-3">
+                  <p className="text-card-foreground text-left leading-relaxed">
+                    {benefit.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}

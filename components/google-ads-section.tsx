@@ -2,7 +2,14 @@
 
 import { useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  ExpandableChevron,
+  ExpandableHint,
+  expandableCardClassName,
+  expandableCardHeaderClassName,
+} from "@/components/expandable-card-cues";
 import { CheckCircle2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 export function GoogleAdsSection() {
   const segmentation = useMemo(
     () => [
@@ -71,13 +78,24 @@ export function GoogleAdsSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-black">
             Google Ads
           </h2>
+          <p className="text-sm text-muted-foreground text-center mb-6 max-w-lg mx-auto">
+            Cada tarjeta se puede expandir: tocala o pasá el cursor para leer el
+            detalle.
+          </p>
 
           <div>
-            <Card className="mb-6 group overflow-hidden gap-0" tabIndex={0}>
-              <CardHeader>
-                <CardTitle className="text-card-foreground">
-                  ¿Qué es Google Ads?
-                </CardTitle>
+            <Card
+              className={cn("mb-6", expandableCardClassName)}
+              tabIndex={0}
+            >
+              <CardHeader className={expandableCardHeaderClassName}>
+                <div className="min-w-0 flex-1">
+                  <CardTitle className="text-card-foreground">
+                    ¿Qué es Google Ads?
+                  </CardTitle>
+                  <ExpandableHint />
+                </div>
+                <ExpandableChevron className="mt-0.5" />
               </CardHeader>
               <CardContent className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4">
                 <p className="text-card-foreground leading-relaxed">
@@ -90,11 +108,18 @@ export function GoogleAdsSection() {
               </CardContent>
             </Card>
 
-            <Card className="mb-6 group overflow-hidden gap-0" tabIndex={0}>
-              <CardHeader>
-                <CardTitle className="text-card-foreground">
-                  ¿Cómo se puede segmentar mi campaña?
-                </CardTitle>
+            <Card
+              className={cn("mb-6", expandableCardClassName)}
+              tabIndex={0}
+            >
+              <CardHeader className={expandableCardHeaderClassName}>
+                <div className="min-w-0 flex-1">
+                  <CardTitle className="text-card-foreground">
+                    ¿Cómo se puede segmentar mi campaña?
+                  </CardTitle>
+                  <ExpandableHint />
+                </div>
+                <ExpandableChevron className="mt-0.5" />
               </CardHeader>
               <CardContent className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4">
                 <p className="text-card-foreground mb-4">
@@ -112,11 +137,18 @@ export function GoogleAdsSection() {
               </CardContent>
             </Card>
 
-            <Card className="mb-6 group overflow-hidden gap-0" tabIndex={0}>
-              <CardHeader>
-                <CardTitle className="text-card-foreground">
-                  ¿Qué necesito para poder publicar?
-                </CardTitle>
+            <Card
+              className={cn("mb-6", expandableCardClassName)}
+              tabIndex={0}
+            >
+              <CardHeader className={expandableCardHeaderClassName}>
+                <div className="min-w-0 flex-1">
+                  <CardTitle className="text-card-foreground">
+                    ¿Qué necesito para poder publicar?
+                  </CardTitle>
+                  <ExpandableHint />
+                </div>
+                <ExpandableChevron className="mt-0.5" />
               </CardHeader>
               <CardContent className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4">
                 <ul className="space-y-2">
@@ -134,13 +166,17 @@ export function GoogleAdsSection() {
               {faqs.map((faq, index) => (
                 <Card
                   key={index}
-                  className="group overflow-hidden gap-0"
+                  className={expandableCardClassName}
                   tabIndex={0}
                 >
-                  <CardHeader>
-                    <CardTitle className="text-lg text-card-foreground">
-                      {faq.question}
-                    </CardTitle>
+                  <CardHeader className={expandableCardHeaderClassName}>
+                    <div className="min-w-0 flex-1">
+                      <CardTitle className="text-lg text-card-foreground">
+                        {faq.question}
+                      </CardTitle>
+                      <ExpandableHint />
+                    </div>
+                    <ExpandableChevron className="mt-0.5" />
                   </CardHeader>
                   <CardContent className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4">
                     <p className="text-card-foreground leading-relaxed">
