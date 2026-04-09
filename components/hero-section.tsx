@@ -17,7 +17,7 @@ export function HeroSection() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 text-balance">
             Visibiliza tu marca/empresa en Redes Sociales y Google
           </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-8 text-pretty leading-relaxed">
+          <p className="text-lg md:text-xl text-white mb-8 text-pretty leading-relaxed">
             Gestionamos campañas publicitarias para que tu marca esté en el
             momento y lugar exacto en donde tus clientes te están buscando.
             Posiciónate en tu nicho.

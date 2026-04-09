@@ -160,16 +160,16 @@ export function PricingSection() {
             <CardTitle className="text-xl md:text-2xl leading-tight">
               {plan.name}
               {plan.showStar ? (
-                <span className="text-primary" aria-hidden>
+                <span className="text-primary-on-light" aria-hidden>
                   {" "}
                   ⭐
                 </span>
               ) : null}
             </CardTitle>
-            <p className="text-base font-semibold text-primary mt-2">
+            <p className="text-base font-semibold text-primary-on-light mt-2">
               {plan.tagline}
             </p>
-            <p className="text-sm text-card-foreground/80 mt-2 leading-relaxed">
+            <p className="text-sm text-card-foreground mt-2 leading-relaxed">
               {plan.ideal}
             </p>
           </CardHeader>
@@ -183,7 +183,7 @@ export function PricingSection() {
                   emphasizeVolumeFeatures && volumeFeature.test(feature);
                 return (
                   <li key={idx} className="flex gap-2 text-sm leading-snug">
-                    <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                    <Check className="h-5 w-5 text-primary-on-light shrink-0 mt-0.5" />
                     <span
                       className={
                         isVolume ? "font-semibold text-card-foreground" : ""
@@ -196,10 +196,10 @@ export function PricingSection() {
               })}
             </ul>
             <div className="border-t border-primary/15 pt-4 mb-4">
-              <p className="text-xs font-bold uppercase tracking-wide text-card-foreground/90 mb-1.5">
+              <p className="text-xs font-bold uppercase tracking-wide text-card-foreground mb-1.5">
                 Resultado esperado
               </p>
-              <p className="text-sm text-card-foreground/85 leading-relaxed">
+              <p className="text-sm text-card-foreground leading-relaxed">
                 {plan.resultado}
               </p>
             </div>
@@ -232,11 +232,11 @@ export function PricingSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-3 text-center text-black">
             Planes
           </h2>
-          <p className="text-center text-sm font-semibold uppercase tracking-wider text-primary mb-2">
+          <p className="text-center text-sm font-semibold uppercase tracking-wider text-primary-on-light mb-2">
             Publicidad online
           </p>
 
-          <p className="text-lg text-black/80 text-center mb-12 text-pretty max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-800 text-center mb-12 text-pretty max-w-2xl mx-auto">
             Elegí el plan que mejor encaje con el momento de tu negocio.
           </p>
 
@@ -252,7 +252,7 @@ export function PricingSection() {
               <span aria-hidden>⚠️</span>
               IMPORTANTE
             </h3>
-            <div className="space-y-2.5 text-sm text-card-foreground/90 leading-relaxed">
+            <div className="space-y-2.5 text-sm text-card-foreground leading-relaxed">
               <p>La inversión publicitaria no está incluida en los planes.</p>
               <p>
                 El presupuesto de anuncios se paga directamente a Meta o Google.
@@ -264,11 +264,11 @@ export function PricingSection() {
             </div>
           </aside>
 
-          <p className="text-center text-sm font-semibold uppercase tracking-wider text-primary mb-2">
+          <p className="text-center text-sm font-semibold uppercase tracking-wider text-primary-on-light mb-2">
             Community manager
           </p>
 
-          <p className="text-lg text-black/80 text-center mb-12 text-pretty max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-800 text-center mb-12 text-pretty max-w-2xl mx-auto">
             Elegí el volumen de contenido que mejor se adapta a tu marca.
           </p>
 

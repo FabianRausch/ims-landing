@@ -5,6 +5,10 @@
 
 :root {
   --main-color: #da4376;
+  /* Texto marca sobre fondos claros (#f7ece1, blanco): ≥4.5:1 WCAG AA */
+  --primary-on-light: #4a1526;
+  /* Hover sólido (evita primary/90 que baja contraste con texto blanco) */
+  --primary-hover: #b83260;
   --background: var(--main-color);
   --foreground: oklch(1 0 0);
   --card: #f7ece1;
@@ -16,7 +20,8 @@
   --secondary: oklch(0.96 0.01 350);
   --secondary-foreground: oklch(0.28 0.05 350);
   --muted: oklch(0.95 0.01 350);
-  --muted-foreground: oklch(0.48 0.04 350);
+  /* Texto secundario sobre blanco: contraste AA cuerpo */
+  --muted-foreground: oklch(0.36 0.03 350);
   --accent: oklch(0.95 0.02 350);
   --accent-foreground: oklch(0.28 0.05 350);
   --destructive: oklch(0.577 0.245 27.325);
@@ -88,6 +93,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
+  --color-primary-on-light: var(--primary-on-light);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);

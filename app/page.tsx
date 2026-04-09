@@ -9,7 +9,7 @@ import { ProcessSection } from "@/components/process-section";
 import { ContactSection } from "@/components/contact-section";
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <>
       <HeroSection />
       <ProblemSection />
       <BenefitsSection />
@@ -19,6 +19,6 @@ export default function Home() {
       <PricingSection />
       <ProcessSection />
       <ContactSection />
-    </main>
+    </>
   );
 }

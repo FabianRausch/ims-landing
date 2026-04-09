@@ -101,7 +101,7 @@ export function ContactSection() {
 
                 <Button
                   type="submit"
-                  className="w-full text-white cursor-pointer"
+                  className="w-full cursor-pointer"
                   size="lg"
                 >
                   Enviar consulta

@@ -75,7 +75,7 @@ export function BenefitsSection() {
               <Card className="border-2 shadow-md bg-card/95 backdrop-blur-sm rounded-lg py-0! gap-0">
                 <CardContent className="px-3 py-2">
                   <div className="flex items-center gap-2 min-h-0">
-                    <benefit.icon className="h-7 w-7 text-primary shrink-0" />
+                    <benefit.icon className="h-7 w-7 text-primary-on-light shrink-0" />
                     <h3 className="text-xs font-bold text-card-foreground text-left line-clamp-2 leading-tight">
                       {benefit.title}
                     </h3>
@@ -88,7 +88,7 @@ export function BenefitsSection() {
             <Card className="border-2 shadow-lg max-h-[78vh] overflow-y-auto bg-card py-0! gap-0">
               <CardContent className="px-6 py-6">
                 <div className="flex items-center justify-center gap-2 mb-4">
-                  <benefit.icon className="h-10 w-10 text-primary shrink-0" />
+                  <benefit.icon className="h-10 w-10 text-primary-on-light shrink-0" />
                   <h3 className="text-xl font-bold text-card-foreground text-center">
                     {benefit.title}
                   </h3>
@@ -128,7 +128,7 @@ export function BenefitsSection() {
               >
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-center gap-2 mb-4">
-                    <benefit.icon className="h-10 w-10 text-primary" />
+                    <benefit.icon className="h-10 w-10 text-primary-on-light" />
                     <h3 className="text-xl font-bold text-card-foreground">
                       {benefit.title}
                     </h3>

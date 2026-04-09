@@ -41,7 +41,7 @@ export function CommunityManagerSection() {
               <ul className="space-y-3 mb-6">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex gap-2">
-                    <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-6 w-6 text-primary-on-light flex-shrink-0 mt-0.5" />
                     <span className="text-lg text-card-foreground">
                       {benefit}
                     </span>
@@ -50,7 +50,7 @@ export function CommunityManagerSection() {
               </ul>
               <p className="text-lg leading-relaxed">
                 En{" "}
-                <span className="font-bold text-primary">
+                <span className="font-bold text-primary-on-light">
                   Impulso Marketing Studio
                 </span>{" "}
                 nos ocupamos de tus redes para que vos te enfoques en lo que

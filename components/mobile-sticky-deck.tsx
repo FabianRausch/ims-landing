@@ -114,7 +114,9 @@ export function MobileStickyDeck({
                   pointerEvents: isFuture ? "none" : "auto",
                 }}
               >
-                {item.render(state)}
+                <div className="w-full" {...(isFuture ? { inert: true } : {})}>
+                  {item.render(state)}
+                </div>
               </motion.div>
             );
           })}

@@ -87,7 +87,7 @@ export function GoogleAdsSection() {
             <ul className="space-y-2">
               {segmentation.map((item, index) => (
                 <li key={index} className="flex gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-5 w-5 text-primary-on-light shrink-0 mt-0.5" />
                   <span className="text-card-foreground">{item}</span>
                 </li>
               ))}
@@ -103,7 +103,7 @@ export function GoogleAdsSection() {
           <ul className="space-y-2">
             {requirements.map((item, index) => (
               <li key={index} className="flex gap-2">
-                <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                <CheckCircle2 className="h-5 w-5 text-primary-on-light shrink-0 mt-0.5" />
                 <span className="text-card-foreground">{item}</span>
               </li>
             ))}
@@ -207,7 +207,7 @@ export function GoogleAdsSection() {
                 <ul className="space-y-2">
                   {segmentation.map((item, index) => (
                     <li key={index} className="flex gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                      <CheckCircle2 className="h-5 w-5 text-primary-on-light shrink-0 mt-0.5" />
                       <span className="text-card-foreground">{item}</span>
                     </li>
                   ))}
@@ -225,7 +225,7 @@ export function GoogleAdsSection() {
                 <ul className="space-y-2">
                   {requirements.map((item, index) => (
                     <li key={index} className="flex gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                      <CheckCircle2 className="h-5 w-5 text-primary-on-light shrink-0 mt-0.5" />
                       <span className="text-card-foreground">{item}</span>
                     </li>
                   ))}

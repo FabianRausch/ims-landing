@@ -26,8 +26,11 @@ export function Navbar() {
     { href: "/#contacto", label: "CONTACTO" },
   ];
 
+  const mobileMenuId = "navbar-mobile-links";
+
   return (
     <nav
+      aria-label="Principal"
       className={`fixed top-0 left-0 right-0 z-100 transition-all duration-300 ${
         isScrolled
           ? "bg-background backdrop-blur-sm shadow-md text-white"
@@ -49,13 +52,15 @@ export function Navbar() {
           </Link>
 
           <Button
+            type="button"
             variant="ghost"
             size="icon"
             className="cursor-pointer"
-            onClick={() => {
-              console.log("clicked");
-              setIsOpen(!isOpen);
-            }}
+            aria-expanded={isOpen}
+            aria-controls={mobileMenuId}
+            aria-haspopup="true"
+            aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+            onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
@@ -63,7 +68,10 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="p-4 space-y-2 bg-card border rounded-lg shadow-sm absolute top-16 right-4">
+          <div
+            id={mobileMenuId}
+            className="p-4 space-y-2 bg-card border rounded-lg shadow-sm absolute top-16 right-4"
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.href}

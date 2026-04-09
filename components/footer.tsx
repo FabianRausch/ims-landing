@@ -18,7 +18,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-background text-white pt-12 pb-6 md:pt-16 md:pb-8">
+    <footer className="bg-[color-mix(in_srgb,var(--main-color)78%,#000_22%)] text-white pt-12 pb-6 md:pt-16 md:pb-8">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Logo and Description */}
@@ -34,7 +34,7 @@ export function Footer() {
                 Impulso Marketing Studio
               </span>
             </Link>
-            <p className="text-white/80 leading-relaxed">
+            <p className="text-white leading-relaxed">
               Tu agencia de marketing digital especializada en Meta Ads y
               gestión de redes sociales.
             </p>
@@ -48,7 +48,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-white/80 hover:text-black transition-colors"
+                    className="text-white hover:underline hover:opacity-90 transition-opacity"
                   >
                     {link.label}
                   </Link>
@@ -63,24 +63,24 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
                 <MapPin className="h-5 w-5 text-white shrink-0 mt-0.5" />
-                <span className="text-white/80">
+                <span className="text-white">
                   {process.env.NEXT_PUBLIC_CONTACT_ADDRESS}
                 </span>
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="h-5 w-5  shrink-0" />
+                <Phone className="h-5 w-5 text-white shrink-0" />
                 <Link
                   href={`tel:${process.env.NEXT_PUBLIC_CONTACT_WHATSAPP}`}
-                  className="text-white/80 hover:text-black transition-colors "
+                  className="text-white hover:underline hover:opacity-90 transition-opacity"
                 >
                   {process.env.NEXT_PUBLIC_CONTACT_WHATSAPP}
                 </Link>
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="h-5 w-5 shrink-0" />
+                <Mail className="h-5 w-5 text-white shrink-0" />
                 <Link
                   href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
-                  className="text-white/80 hover:text-black transition-colors"
+                  className="text-white hover:underline hover:opacity-90 transition-opacity"
                 >
                   {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
                 </Link>
@@ -96,7 +96,7 @@ export function Footer() {
                 href={process.env.NEXT_PUBLIC_CONTACT_FACEBOOK_URL || ""}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 text-white hover:bg-white hover:text-primary rounded-lg flex items-center justify-center transition-colors"
+                className="w-10 h-10 border border-white/50 bg-white/15 text-white hover:bg-white hover:text-primary rounded-lg flex items-center justify-center transition-colors"
               >
                 <Facebook className="h-5 w-5" />
               </Link>
@@ -104,7 +104,7 @@ export function Footer() {
                 href={process.env.NEXT_PUBLIC_CONTACT_INSTAGRAM_URL || ""}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 text-white hover:bg-white hover:text-primary rounded-lg flex items-center justify-center transition-colors"
+                className="w-10 h-10 border border-white/50 bg-white/15 text-white hover:bg-white hover:text-primary rounded-lg flex items-center justify-center transition-colors"
               >
                 <Instagram className="h-5 w-5" />
               </Link>
@@ -112,7 +112,7 @@ export function Footer() {
                 href={`https://wa.me/${whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 text-white hover:bg-white hover:text-primary rounded-lg flex items-center justify-center transition-colors"
+                className="w-10 h-10 border border-white/50 bg-white/15 text-white hover:bg-white hover:text-primary rounded-lg flex items-center justify-center transition-colors"
               >
                 <svg
                   className="h-5 w-5"
@@ -124,7 +124,7 @@ export function Footer() {
               </Link>
             </div>
             <Button
-              className="w-full bg-white text-primary hover:bg-white/50 hover:text-white transition-colors"
+              className="w-full bg-white text-primary hover:bg-neutral-100 hover:text-primary"
               asChild
             >
               <Link
@@ -138,7 +138,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/40 pt-8 text-center text-white/50 text-sm">
+        <div className="border-t border-white/50 pt-8 text-center text-white text-sm">
           <p>
             &copy; {new Date().getFullYear()} Impulso Marketing Studio. Todos
             los derechos reservados.
