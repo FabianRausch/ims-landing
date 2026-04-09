@@ -30,7 +30,7 @@ export default function RootLayout({
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <a
           href="#main-content"
-          className="absolute left-[-10000px] top-auto z-[200] h-px w-px overflow-hidden whitespace-nowrap border-0 focus-visible:left-4 focus-visible:top-4 focus-visible:h-auto focus-visible:w-auto focus-visible:overflow-visible focus-visible:whitespace-normal focus-visible:rounded-md focus-visible:bg-white focus-visible:px-4 focus-visible:py-2 focus-visible:text-black focus-visible:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          className="fixed left-4 top-4 z-[200] -translate-y-[200%] rounded-md bg-white px-4 py-2 text-sm font-medium text-black shadow-lg outline-none ring-2 ring-primary transition-transform duration-200 focus:translate-y-0 focus-visible:translate-y-0"
         >
           Saltar al contenido principal
         </a>

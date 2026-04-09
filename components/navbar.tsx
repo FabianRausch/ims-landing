@@ -88,11 +88,10 @@ export function Navbar() {
 
             {isOpen ? (
               <>
-                <button
-                  type="button"
-                  tabIndex={-1}
-                  aria-hidden
-                  className="fixed inset-x-0 bottom-0 top-16 md:top-20 z-[105] cursor-default border-0 bg-black/40 p-0"
+                {/* div (no botón): un <button aria-hidden> sigue siendo enfocable y falla axe */}
+                <div
+                  role="presentation"
+                  className="fixed inset-x-0 bottom-0 top-16 z-[105] cursor-pointer bg-black/40 md:top-20"
                   onClick={() => setIsOpen(false)}
                 />
                 <div
