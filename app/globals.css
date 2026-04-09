@@ -15,7 +15,11 @@
   --card-foreground: #000000;
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.22 0.03 350);
-  --primary: var(--main-color);
+  /*
+   * Rellenos con texto blanco (botones, badges, etc.): tono más oscuro que
+   * --main-color para ≥4.5:1 con blanco. Bordes/anillo siguen en --main-color.
+   */
+  --primary: #c42d62;
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.96 0.01 350);
   --secondary-foreground: oklch(0.28 0.05 350);
