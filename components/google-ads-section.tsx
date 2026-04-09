@@ -1,15 +1,10 @@
 "use client";
 
 import { useMemo } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  ExpandableChevron,
-  ExpandableHint,
-  expandableCardClassName,
-  expandableCardHeaderClassName,
-} from "@/components/expandable-card-cues";
+import { CardTitle } from "@/components/ui/card";
+import { ExpandableCard } from "@/components/expandable-card";
 import { CheckCircle2 } from "lucide-react";
-import { cn } from "@/lib/utils";
+
 export function GoogleAdsSection() {
   const segmentation = useMemo(
     () => [
@@ -79,111 +74,85 @@ export function GoogleAdsSection() {
             Google Ads
           </h2>
           <p className="text-sm text-muted-foreground text-center mb-6 max-w-lg mx-auto">
-            Cada tarjeta se puede expandir: tocala o pasá el cursor para leer el
-            detalle.
+            <span className="md:hidden">
+              Tocá una tarjeta para ver el detalle; tocá de nuevo para cerrarla.
+            </span>
+            <span className="hidden md:inline">
+              Pasá el cursor sobre cada tarjeta para ver el detalle.
+            </span>
           </p>
 
           <div>
-            <Card
-              className={cn("mb-6", expandableCardClassName)}
-              tabIndex={0}
+            <ExpandableCard
+              className="mb-6"
+              header={
+                <CardTitle className="text-card-foreground">
+                  ¿Qué es Google Ads?
+                </CardTitle>
+              }
             >
-              <CardHeader className={expandableCardHeaderClassName}>
-                <div className="min-w-0 flex-1">
-                  <CardTitle className="text-card-foreground">
-                    ¿Qué es Google Ads?
-                  </CardTitle>
-                  <ExpandableHint />
-                </div>
-                <ExpandableChevron className="mt-0.5" />
-              </CardHeader>
-              <CardContent className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4">
-                <p className="text-card-foreground leading-relaxed">
-                  Es la plataforma de publicidad de Google que permite mostrar
-                  anuncios en los resultados de búsqueda, en sitios web
-                  asociados (Red de Display), en YouTube, Gmail y Maps. Te
-                  conecta con personas en el momento exacto en que buscan lo que
-                  ofrecés.
-                </p>
-              </CardContent>
-            </Card>
+              <p className="text-card-foreground leading-relaxed">
+                Es la plataforma de publicidad de Google que permite mostrar
+                anuncios en los resultados de búsqueda, en sitios web asociados
+                (Red de Display), en YouTube, Gmail y Maps. Te conecta con
+                personas en el momento exacto en que buscan lo que ofrecés.
+              </p>
+            </ExpandableCard>
 
-            <Card
-              className={cn("mb-6", expandableCardClassName)}
-              tabIndex={0}
+            <ExpandableCard
+              className="mb-6"
+              header={
+                <CardTitle className="text-card-foreground">
+                  ¿Cómo se puede segmentar mi campaña?
+                </CardTitle>
+              }
             >
-              <CardHeader className={expandableCardHeaderClassName}>
-                <div className="min-w-0 flex-1">
-                  <CardTitle className="text-card-foreground">
-                    ¿Cómo se puede segmentar mi campaña?
-                  </CardTitle>
-                  <ExpandableHint />
-                </div>
-                <ExpandableChevron className="mt-0.5" />
-              </CardHeader>
-              <CardContent className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4">
-                <p className="text-card-foreground mb-4">
-                  En Google, la segmentación es muy potente y se divide
-                  principalmente en:
-                </p>
-                <ul className="space-y-2">
-                  {segmentation.map((item, index) => (
-                    <li key={index} className="flex gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-primary-on-light shrink-0 mt-0.5" />
-                      <span className="text-card-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+              <p className="text-card-foreground mb-4">
+                En Google, la segmentación es muy potente y se divide
+                principalmente en:
+              </p>
+              <ul className="space-y-2">
+                {segmentation.map((item, index) => (
+                  <li key={index} className="flex gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary-on-light shrink-0 mt-0.5" />
+                    <span className="text-card-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </ExpandableCard>
 
-            <Card
-              className={cn("mb-6", expandableCardClassName)}
-              tabIndex={0}
+            <ExpandableCard
+              className="mb-6"
+              header={
+                <CardTitle className="text-card-foreground">
+                  ¿Qué necesito para poder publicar?
+                </CardTitle>
+              }
             >
-              <CardHeader className={expandableCardHeaderClassName}>
-                <div className="min-w-0 flex-1">
-                  <CardTitle className="text-card-foreground">
-                    ¿Qué necesito para poder publicar?
-                  </CardTitle>
-                  <ExpandableHint />
-                </div>
-                <ExpandableChevron className="mt-0.5" />
-              </CardHeader>
-              <CardContent className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4">
-                <ul className="space-y-2">
-                  {requirements.map((item, index) => (
-                    <li key={index} className="flex gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-primary-on-light shrink-0 mt-0.5" />
-                      <span className="text-card-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+              <ul className="space-y-2">
+                {requirements.map((item, index) => (
+                  <li key={index} className="flex gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary-on-light shrink-0 mt-0.5" />
+                    <span className="text-card-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </ExpandableCard>
 
             <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <Card
+                <ExpandableCard
                   key={index}
-                  className={expandableCardClassName}
-                  tabIndex={0}
+                  header={
+                    <CardTitle className="text-lg text-card-foreground">
+                      {faq.question}
+                    </CardTitle>
+                  }
                 >
-                  <CardHeader className={expandableCardHeaderClassName}>
-                    <div className="min-w-0 flex-1">
-                      <CardTitle className="text-lg text-card-foreground">
-                        {faq.question}
-                      </CardTitle>
-                      <ExpandableHint />
-                    </div>
-                    <ExpandableChevron className="mt-0.5" />
-                  </CardHeader>
-                  <CardContent className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4">
-                    <p className="text-card-foreground leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </CardContent>
-                </Card>
+                  <p className="text-card-foreground leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </ExpandableCard>
               ))}
             </div>
           </div>
