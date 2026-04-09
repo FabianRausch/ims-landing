@@ -16,17 +16,17 @@ export function CommunityManagerSection() {
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-balance text-white ">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-balance text-black ">
             Community Manager: Tu marca, siempre presente
           </h2>
 
           <Card className="mb-6">
             <CardContent className="pt-3">
-              <p className="text-lg text-white leading-relaxed mb-4">
+              <p className="text-lg text-card-foreground leading-relaxed mb-4">
                 Hoy en día no alcanza con tener redes sociales, hay que estar
                 activo y generar conversación.
               </p>
-              <p className="text-lg text-white leading-relaxed">
+              <p className="text-lg text-card-foreground leading-relaxed">
                 Un community manager es quien le da voz, personalidad y
                 constancia a tu marca en el mundo digital.
               </p>
@@ -42,7 +42,9 @@ export function CommunityManagerSection() {
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex gap-2">
                     <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-lg text-white">{benefit}</span>
+                    <span className="text-lg text-card-foreground">
+                      {benefit}
+                    </span>
                   </li>
                 ))}
               </ul>

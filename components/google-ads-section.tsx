@@ -66,21 +66,21 @@ export function GoogleAdsSection() {
         key: "what",
         title: "¿Qué es Google Ads?",
         body: (
-          <p className="text-white leading-relaxed">
+          <p className="text-card-foreground leading-relaxed">
             Es la plataforma de publicidad de Google que permite mostrar
             anuncios en los resultados de búsqueda, en sitios web asociados (Red
             de Display), en YouTube, Gmail y Maps. Te conecta con personas en el
             momento exacto en que buscan lo que ofrecés.
           </p>
         ),
-        titleClassName: "text-white",
+        titleClassName: "text-card-foreground",
       },
       {
         key: "segment",
         title: "¿Cómo se puede segmentar mi campaña?",
         body: (
           <>
-            <p className="text-white mb-4">
+            <p className="text-card-foreground mb-4">
               En Google, la segmentación es muy potente y se divide
               principalmente en:
             </p>
@@ -88,13 +88,13 @@ export function GoogleAdsSection() {
               {segmentation.map((item, index) => (
                 <li key={index} className="flex gap-2">
                   <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                  <span className="text-white">{item}</span>
+                  <span className="text-card-foreground">{item}</span>
                 </li>
               ))}
             </ul>
           </>
         ),
-        titleClassName: "text-white",
+        titleClassName: "text-card-foreground",
       },
       {
         key: "requirements",
@@ -104,18 +104,20 @@ export function GoogleAdsSection() {
             {requirements.map((item, index) => (
               <li key={index} className="flex gap-2">
                 <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                <span className="text-white">{item}</span>
+                <span className="text-card-foreground">{item}</span>
               </li>
             ))}
           </ul>
         ),
-        titleClassName: "text-white",
+        titleClassName: "text-card-foreground",
       },
       ...faqs.map((faq) => ({
         key: `faq-${faq.question}`,
         title: faq.question,
-        body: <p className="text-white leading-relaxed">{faq.answer}</p>,
-        titleClassName: "text-lg text-white",
+        body: (
+          <p className="text-card-foreground leading-relaxed">{faq.answer}</p>
+        ),
+        titleClassName: "text-lg text-card-foreground",
       })),
     ];
   }, [faqs, requirements, segmentation]);
@@ -130,7 +132,7 @@ export function GoogleAdsSection() {
               <Card className="border-2 shadow-md bg-card/95 backdrop-blur-sm rounded-lg !py-0 gap-0">
                 <CardHeader className="space-y-0 py-2 px-3 !py-2">
                   <CardTitle
-                    className={`${card.titleClassName ?? "text-white"} text-xs sm:text-sm font-semibold leading-tight line-clamp-2`}
+                    className={`${card.titleClassName ?? "text-card-foreground"} text-xs sm:text-sm font-semibold leading-tight line-clamp-2`}
                   >
                     {card.title}
                   </CardTitle>
@@ -141,7 +143,9 @@ export function GoogleAdsSection() {
           return (
             <Card className="border-2 shadow-lg max-h-[78vh] overflow-y-auto bg-card !py-0 gap-0">
               <CardHeader className="px-6 pt-6 pb-2">
-                <CardTitle className={card.titleClassName ?? "text-white"}>
+                <CardTitle
+                  className={card.titleClassName ?? "text-card-foreground"}
+                >
                   {card.title}
                 </CardTitle>
               </CardHeader>
@@ -157,11 +161,16 @@ export function GoogleAdsSection() {
   return (
     <section
       id="campanas-busqueda"
-      className="py-16 md:py-24 section-bg-alternate scroll-mt-24"
+      className="py-16 md:py-24 bg-linear-to-b from-background/50 to-white scroll-mt-24"
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-white">
+          <img
+            src="/g-a-image.png"
+            alt="Google Ads"
+            className="w-25 h-25 mx-auto"
+          />
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-black">
             Google Ads
           </h2>
 
@@ -169,12 +178,12 @@ export function GoogleAdsSection() {
           <div className="hidden md:block">
             <Card className="mb-6 group overflow-hidden gap-0" tabIndex={0}>
               <CardHeader>
-                <CardTitle className="text-white">
+                <CardTitle className="text-card-foreground">
                   ¿Qué es Google Ads?
                 </CardTitle>
               </CardHeader>
               <CardContent className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4">
-                <p className="text-white leading-relaxed">
+                <p className="text-card-foreground leading-relaxed">
                   Es la plataforma de publicidad de Google que permite mostrar
                   anuncios en los resultados de búsqueda, en sitios web
                   asociados (Red de Display), en YouTube, Gmail y Maps. Te
@@ -186,12 +195,12 @@ export function GoogleAdsSection() {
 
             <Card className="mb-6 group overflow-hidden gap-0" tabIndex={0}>
               <CardHeader>
-                <CardTitle className="text-white">
+                <CardTitle className="text-card-foreground">
                   ¿Cómo se puede segmentar mi campaña?
                 </CardTitle>
               </CardHeader>
               <CardContent className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4">
-                <p className="text-white mb-4">
+                <p className="text-card-foreground mb-4">
                   En Google, la segmentación es muy potente y se divide
                   principalmente en:
                 </p>
@@ -199,7 +208,7 @@ export function GoogleAdsSection() {
                   {segmentation.map((item, index) => (
                     <li key={index} className="flex gap-2">
                       <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                      <span className="text-white">{item}</span>
+                      <span className="text-card-foreground">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -208,7 +217,7 @@ export function GoogleAdsSection() {
 
             <Card className="mb-6 group overflow-hidden gap-0" tabIndex={0}>
               <CardHeader>
-                <CardTitle className="text-white">
+                <CardTitle className="text-card-foreground">
                   ¿Qué necesito para poder publicar?
                 </CardTitle>
               </CardHeader>
@@ -217,7 +226,7 @@ export function GoogleAdsSection() {
                   {requirements.map((item, index) => (
                     <li key={index} className="flex gap-2">
                       <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                      <span className="text-white">{item}</span>
+                      <span className="text-card-foreground">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -232,12 +241,14 @@ export function GoogleAdsSection() {
                   tabIndex={0}
                 >
                   <CardHeader>
-                    <CardTitle className="text-lg text-white">
+                    <CardTitle className="text-lg text-card-foreground">
                       {faq.question}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="overflow-hidden max-h-0 opacity-0 translate-y-1 transition-[max-height,opacity,transform] duration-300 pt-0 group-hover:max-h-96 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pt-4 group-focus-within:max-h-96 group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pt-4">
-                    <p className="text-white leading-relaxed">{faq.answer}</p>
+                    <p className="text-card-foreground leading-relaxed">
+                      {faq.answer}
+                    </p>
                   </CardContent>
                 </Card>
               ))}

@@ -35,14 +35,14 @@ export function ProcessSection() {
   return (
     <section
       id="proceso"
-      className="py-16 md:py-24 section-bg-alternate"
+      className="py-16 md:py-24 bg-linear-to-b from-background/50 to-white"
     >
       <div className="container mx-auto px-4 py-2 relative z-10">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-white ">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-black ">
             Nuestro proceso
           </h2>
-          <p className="text-lg text-center mb-12 text-white">
+          <p className="text-lg text-center mb-12 text-black">
             Así trabajamos para impulsar tu negocio
           </p>
 
@@ -51,13 +51,13 @@ export function ProcessSection() {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-card rounded-lg border-2 px-6 text-white"
+                className="bg-card rounded-lg border-2 px-6 text-card-foreground"
               >
                 <AccordionTrigger className="text-left hover:no-underline items-center">
                   <span className="font-bold text-lg">{step.title}</span>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p className="text-white leading-relaxed">
+                  <p className="text-card-foreground leading-relaxed">
                     {step.description}
                   </p>
                 </AccordionContent>

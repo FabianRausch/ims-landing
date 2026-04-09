@@ -4,21 +4,21 @@
 /* @custom-variant dark (&:is(.dark *)); */
 
 :root {
-  --main-color: #eb5f10;
+  --main-color: #da4376;
   --background: var(--main-color);
-  --foreground: oklch(0.045 0 0);
-  --card: oklch(0.285 0 0);
-  --card-foreground: white;
+  --foreground: oklch(1 0 0);
+  --card: #f7ece1;
+  --card-foreground: #000000;
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.22 0.03 350);
   --primary: var(--main-color);
-  --primary-foreground: oklch(0.085 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.96 0.01 350);
+  --secondary-foreground: oklch(0.28 0.05 350);
+  --muted: oklch(0.95 0.01 350);
+  --muted-foreground: oklch(0.48 0.04 350);
+  --accent: oklch(0.95 0.02 350);
+  --accent-foreground: oklch(0.28 0.05 350);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --border: var(--main-color);
@@ -31,11 +31,11 @@
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.22 0.03 350);
+  --sidebar-primary: var(--main-color);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.95 0.02 350);
+  --sidebar-accent-foreground: oklch(0.28 0.05 350);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   
@@ -44,11 +44,11 @@
   --section-bg-hero: linear-gradient(180deg, var(--main-color), var(--foreground));
   --section-bg-alternate: linear-gradient(180deg, var(--foreground), var(--main-color), var(--foreground));
   --section-bg-image-opacity: 0.15;
-  --section-bg-overlay: rgba(0, 0, 0, 0.1);
+  --section-bg-overlay: rgba(255, 255, 255, 0.12);
 }
 
 /* .dark {
-  --main-color: #eb5f10;
+  --main-color: #da4376;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);
@@ -87,7 +87,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* Orange and white theme for marketing agency */
+  /* Pink and white theme for marketing agency */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);

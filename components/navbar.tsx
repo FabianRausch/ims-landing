@@ -28,10 +28,10 @@ export function Navbar() {
 
   return (
     <nav
-      className={`text-white fixed top-0 left-0 right-0 z-100 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-100 transition-all duration-300 ${
         isScrolled
-          ? "bg-foreground backdrop-blur-sm shadow-md"
-          : "bg-transparent"
+          ? "bg-background backdrop-blur-sm shadow-md text-white"
+          : "bg-transparent text-white"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -44,16 +44,18 @@ export function Navbar() {
               height={50}
             />
             <span className="font-bold text-lg hidden sm:inline">
-              Impulso Marketing
+              Impulso Marketing Studio
             </span>
           </Link>
 
-          {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
             className="cursor-pointer"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => {
+              console.log("clicked");
+              setIsOpen(!isOpen);
+            }}
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
@@ -66,7 +68,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block py-2 text-sm font-medium hover:text-orange-500 transition-colors"
+                className="block py-2 text-sm font-medium text-black hover:text-primary transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}

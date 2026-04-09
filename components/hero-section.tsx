@@ -8,7 +8,10 @@ export function HeroSection() {
   );
 
   return (
-    <section id="start" className="pt-24 pb-16 section-bg-hero">
+    <section
+      id="start"
+      className="pt-24 pb-16 bg-linear-to-b from-primary to-background/50"
+    >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 text-balance">
@@ -19,7 +22,11 @@ export function HeroSection() {
             momento y lugar exacto en donde tus clientes te están buscando.
             Posiciónate en tu nicho.
           </p>
-          <Button size="lg" className="text-lg py-6 h-auto text-white" asChild>
+          <Button
+            size="lg"
+            className="text-lg py-6 h-auto text-white hover:bg-primary bg-primary/70"
+            asChild
+          >
             <a
               href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
               target="_blank"

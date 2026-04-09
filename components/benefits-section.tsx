@@ -76,7 +76,7 @@ export function BenefitsSection() {
                 <CardContent className="px-3 py-2">
                   <div className="flex items-center gap-2 min-h-0">
                     <benefit.icon className="h-7 w-7 text-primary shrink-0" />
-                    <h3 className="text-xs font-bold text-white text-left line-clamp-2 leading-tight">
+                    <h3 className="text-xs font-bold text-card-foreground text-left line-clamp-2 leading-tight">
                       {benefit.title}
                     </h3>
                   </div>
@@ -89,11 +89,11 @@ export function BenefitsSection() {
               <CardContent className="px-6 py-6">
                 <div className="flex items-center justify-center gap-2 mb-4">
                   <benefit.icon className="h-10 w-10 text-primary shrink-0" />
-                  <h3 className="text-xl font-bold text-white text-center">
+                  <h3 className="text-xl font-bold text-card-foreground text-center">
                     {benefit.title}
                   </h3>
                 </div>
-                <p className="text-white leading-relaxed">
+                <p className="text-card-foreground leading-relaxed">
                   {benefit.description}
                 </p>
               </CardContent>
@@ -108,10 +108,10 @@ export function BenefitsSection() {
     <section className="py-10 section-bg-default">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance text-white ">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance text-black ">
             Alcance relevante
           </h2>
-          <p className="text-lg text-white text-pretty">
+          <p className="text-lg text-black text-pretty">
             Tus anuncios llegan a personas que buscan activamente lo que ofrecés
             con la segmentación correcta para que el algoritmo llegue a quien te
             busca.
@@ -129,13 +129,13 @@ export function BenefitsSection() {
                 <CardContent className="pt-6">
                   <div className="flex items-center justify-center gap-2 mb-4">
                     <benefit.icon className="h-10 w-10 text-primary" />
-                    <h3 className="text-xl font-bold text-white">
+                    <h3 className="text-xl font-bold text-card-foreground">
                       {benefit.title}
                     </h3>
                   </div>
 
                   <div className="overflow-hidden transition-[max-height,opacity,transform] duration-300 max-h-0 opacity-0 translate-y-1 group-hover:max-h-40 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:max-h-40 group-focus-within:opacity-100 group-focus-within:translate-y-0">
-                    <p className="text-white leading-relaxed">
+                    <p className="text-card-foreground leading-relaxed">
                       {benefit.description}
                     </p>
                   </div>
