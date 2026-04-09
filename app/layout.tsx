@@ -26,15 +26,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <Navbar />
-        <main id="main-content" className="min-h-screen">
+        <a
+          href="#main-content"
+          className="absolute left-[-10000px] top-auto z-[200] h-px w-px overflow-hidden whitespace-nowrap border-0 focus-visible:left-4 focus-visible:top-4 focus-visible:h-auto focus-visible:w-auto focus-visible:overflow-visible focus-visible:whitespace-normal focus-visible:rounded-md focus-visible:bg-white focus-visible:px-4 focus-visible:py-2 focus-visible:text-black focus-visible:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        >
+          Saltar al contenido principal
+        </a>
+        <header>
+          <Navbar />
+        </header>
+        <main
+          id="main-content"
+          tabIndex={-1}
+          className="min-h-screen outline-none"
+        >
           {children}
           <WhatsappButton />
         </main>
-        <Analytics />
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
