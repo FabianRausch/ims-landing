@@ -53,7 +53,7 @@ export function ProcessSection() {
                 value={`item-${index}`}
                 className="bg-card rounded-lg border-2 px-6 text-card-foreground"
               >
-                <AccordionTrigger className="text-left hover:no-underline items-center">
+                <AccordionTrigger className="text-left hover:no-underline items-center cursor-pointer">
                   <span className="font-bold text-lg">{step.title}</span>
                 </AccordionTrigger>
                 <AccordionContent>
