@@ -5,11 +5,13 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -33,9 +35,9 @@ export function Navbar() {
   }, [isOpen]);
 
   const navLinks = [
-    { href: "/#meta-ads", label: "META ADS" },
-    { href: "/#campanas-busqueda", label: "GOOGLE ADS" },
-    { href: "/#community-manager", label: "COMMUNITY MANAGER" },
+    { href: "/meta-ads", label: "META ADS" },
+    { href: "/google-ads", label: "GOOGLE ADS" },
+    { href: "/community-manager", label: "COMMUNITY MANAGER" },
     { href: "/#combos", label: "COMBOS" },
     { href: "/#proceso", label: "PROCESO" },
     { href: "/#contacto", label: "CONTACTO" },
@@ -47,10 +49,12 @@ export function Navbar() {
     <nav
       aria-label="Principal"
       className={cn(
-        "fixed top-0 left-0 right-0 z-100 transition-all duration-300",
-        isScrolled
-          ? "bg-background backdrop-blur-sm shadow-md text-white"
-          : "bg-transparent text-white",
+        "fixed top-0 left-0 right-0 z-100 transition-all duration-300 bg-background backdrop-blur-sm",
+        isHomePage
+          ? isScrolled
+            ? "shadow-md text-white"
+            : "bg-transparent text-white"
+          : "shadow-md text-white",
       )}
     >
       <div className="container mx-auto px-4">

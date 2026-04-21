@@ -9,9 +9,9 @@ export function Footer() {
   );
 
   const navLinks = [
-    { href: "/#meta-ads", label: "Meta Ads" },
-    { href: "/#campanas-busqueda", label: "Google Ads" },
-    { href: "/#community-manager", label: "Community Manager" },
+    { href: "/meta-ads", label: "Meta Ads" },
+    { href: "/google-ads", label: "Google Ads" },
+    { href: "/community-manager", label: "Community Manager" },
     { href: "/#combos", label: "Combos" },
     { href: "/#proceso", label: "Proceso" },
     { href: "/#contacto", label: "Contacto" },

@@ -1,5 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 
 export function CommunityManagerSection() {
   const benefits = [
@@ -41,7 +43,7 @@ export function CommunityManagerSection() {
               <ul className="space-y-3 mb-6">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex gap-2">
-                    <CheckCircle2 className="h-6 w-6 text-primary-on-light flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-6 w-6 text-primary-on-light shrink-0 mt-0.5" />
                     <span className="text-lg text-card-foreground">
                       {benefit}
                     </span>
@@ -58,6 +60,13 @@ export function CommunityManagerSection() {
               </p>
             </CardContent>
           </Card>
+          <div className="mt-10 flex justify-center">
+            <Button asChild>
+              <Link href="/#planes-community-manager">
+                Ver planes de community manager
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

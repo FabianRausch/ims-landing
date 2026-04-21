@@ -3,6 +3,8 @@
 import { useMemo } from "react";
 import { CardTitle } from "@/components/ui/card";
 import { ExpandableCard } from "@/components/expandable-card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 
 export function MetaAdsSection() {
@@ -147,6 +149,11 @@ export function MetaAdsSection() {
                   </p>
                 </ExpandableCard>
               ))}
+            </div>
+            <div className="mt-10 flex justify-center">
+              <Button asChild>
+                <Link href="/#planes-publicidad">Ver planes de publicidad</Link>
+              </Button>
             </div>
           </div>
         </div>

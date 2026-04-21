@@ -137,7 +137,6 @@ export function PricingSection() {
   ];
 
   const volumeFeature = /^\d+ (?:posts|reels|días de historias)$/;
-
   const renderPlanGrid = (
     plans: Plan[],
     waMessage: string,
@@ -232,13 +231,15 @@ export function PricingSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-3 text-center text-black">
             Planes
           </h2>
-          <p className="text-center text-sm font-semibold uppercase tracking-wider text-primary-on-light mb-2">
-            Publicidad online
-          </p>
+          <div id="planes-publicidad" className="scroll-mt-24">
+            <p className="text-center text-sm font-semibold uppercase tracking-wider text-primary-on-light mb-2">
+              Publicidad online
+            </p>
 
-          <p className="text-lg text-neutral-800 text-center mb-12 text-pretty max-w-2xl mx-auto">
-            Elegí el plan que mejor encaje con el momento de tu negocio.
-          </p>
+            <p className="text-lg text-neutral-800 text-center mb-12 text-pretty max-w-2xl mx-auto">
+              Elegí el plan que mejor encaje con el momento de tu negocio.
+            </p>
+          </div>
 
           <div className="mb-10">
             {renderPlanGrid(adsPlans, whatsappMessageAds, false)}
@@ -264,15 +265,17 @@ export function PricingSection() {
             </div>
           </aside>
 
-          <p className="text-center text-sm font-semibold uppercase tracking-wider text-primary-on-light mb-2">
-            Community manager
-          </p>
+          <div id="planes-community-manager" className="scroll-mt-24">
+            <p className="text-center text-sm font-semibold uppercase tracking-wider text-primary-on-light mb-2">
+              Community manager
+            </p>
 
-          <p className="text-lg text-neutral-800 text-center mb-12 text-pretty max-w-2xl mx-auto">
-            Elegí el volumen de contenido que mejor se adapta a tu marca.
-          </p>
+            <p className="text-lg text-neutral-800 text-center mb-12 text-pretty max-w-2xl mx-auto">
+              Elegí el volumen de contenido que mejor se adapta a tu marca.
+            </p>
 
-          {renderPlanGrid(communityPlans, whatsappMessageCommunity, true)}
+            {renderPlanGrid(communityPlans, whatsappMessageCommunity, true)}
+          </div>
         </div>
       </div>
     </section>

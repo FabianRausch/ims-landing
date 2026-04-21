@@ -63,7 +63,7 @@ export function BenefitsSection() {
   );
 
   return (
-    <section className="py-10 section-bg-default">
+    <section className="py-10">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance text-black ">
