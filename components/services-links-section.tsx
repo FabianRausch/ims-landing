@@ -29,7 +29,7 @@ const serviceLinks = [
 
 export function ServicesLinksSection() {
   return (
-    <section className="py-10 md:py-14 ">
+    <section className="py-10 md:py-14 bg-white/70">
       <div className="container mx-auto px-4">
         <div className="max-w-xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-center text-black mb-2">

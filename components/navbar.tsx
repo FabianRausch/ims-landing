@@ -66,7 +66,7 @@ export function Navbar() {
               width={50}
               height={50}
             />
-            <span className="font-bold text-lg hidden sm:inline">
+            <span className="font-bold text-lg inline">
               Impulso Marketing Studio
             </span>
           </Link>

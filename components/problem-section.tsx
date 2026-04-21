@@ -1,6 +1,6 @@
 export function ProblemSection() {
   return (
-    <section className="py-14 bg-linear-to-b from-background/50 to-white">
+    <section className="py-14 bg-linear-to-b from-background/70 to-white/70">
       <div className="container mx-auto p-4">
         <div className="max-w-3xl mx-auto text-center p-6  bg-white rounded-xl shadow-xl">
           <div className="flex justify-center items-center rounded-full p-5 mb-6">

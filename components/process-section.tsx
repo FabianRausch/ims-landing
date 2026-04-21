@@ -35,7 +35,7 @@ export function ProcessSection() {
   return (
     <section
       id="proceso"
-      className="py-16 md:py-24 bg-linear-to-b from-background/50 to-white"
+      className="py-16 md:py-24 bg-linear-to-b from-background/50 to-white/70"
     >
       <div className="container mx-auto px-4 py-2 relative z-10">
         <div className="max-w-3xl mx-auto">

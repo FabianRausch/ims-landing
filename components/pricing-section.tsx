@@ -224,7 +224,7 @@ export function PricingSection() {
   return (
     <section
       id="combos"
-      className="py-16 md:py-24 bg-linear-to-b from-white to-background/50"
+      className="py-16 md:py-24 bg-linear-to-b from-white/70 to-background/50"
     >
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">

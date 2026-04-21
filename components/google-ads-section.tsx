@@ -77,7 +77,7 @@ export function GoogleAdsSection() {
           </h2>
           <p className="text-sm text-muted-foreground text-center mb-6 max-w-lg mx-auto">
             <span className="md:hidden">
-              Tocá una tarjeta para ver el detalle; tocá de nuevo para cerrarla.
+              Tocá una tarjeta para ver el detalle.
             </span>
             <span className="hidden md:inline">
               Pasá el cursor sobre cada tarjeta para ver el detalle.

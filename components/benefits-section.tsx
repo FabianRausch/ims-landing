@@ -63,7 +63,7 @@ export function BenefitsSection() {
   );
 
   return (
-    <section className="py-10">
+    <section className="py-10 bg-white/70">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance text-black ">
@@ -76,7 +76,7 @@ export function BenefitsSection() {
           </p>
           <p className="text-sm text-muted-foreground mt-4 max-w-lg mx-auto">
             <span className="md:hidden">
-              Tocá una tarjeta para ver el detalle; tocá de nuevo para cerrarla.
+              Tocá una tarjeta para ver el detalle.
             </span>
             <span className="hidden md:inline">
               Pasá el cursor sobre cada tarjeta para ver el detalle.

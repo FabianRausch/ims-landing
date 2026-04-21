@@ -48,10 +48,15 @@
   --sidebar-accent-foreground: oklch(0.28 0.05 350);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  
+
   /* Section background variables - Centralized for easy management */
   --section-bg-default: var(--foreground);
-  --section-bg-alternate: linear-gradient(180deg, var(--foreground), var(--main-color), var(--foreground));
+  --section-bg-alternate: linear-gradient(
+    180deg,
+    var(--foreground),
+    var(--main-color),
+    var(--foreground)
+  );
 }
 
 /* .dark {
@@ -153,10 +158,41 @@ html {
   }
   body {
     @apply bg-foreground text-background;
+    background-image:
+      url("/points.png"), url("/points.png"), url("/points.png");
+    background-position-x:
+      -500px,
+      right -370px,
+      center;
+    background-position-y:
+      1%,
+      40%,
+      bottom -350px;
+    background-repeat: no-repeat, no-repeat;
+    background-size:
+      min(700px, 100vw) auto,
+      min(700px, 100vw) auto,
+      min(1000px, 100vw) auto;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      background-position-x:
+        -300px,
+        right -320px,
+        left -300px;
+      background-position-y: 150px, 40%, 90%;
+      background-size:
+        min(1000px, 100vw) auto,
+        min(700px, 100vw) auto,
+        min(1000px, 100vw) auto;
+    }
   }
 
   /* Fondo blanco real + autofill (Chrome/Safari pintan gris/amarillo por defecto) */
-  [data-slot="input"]:not([type="checkbox"]):not([type="radio"]):not([type="file"]):enabled,
+  [data-slot="input"]:not([type="checkbox"]):not([type="radio"]):not(
+      [type="file"]
+    ):enabled,
   [data-slot="textarea"]:enabled {
     background-color: #ffffff !important;
     color: var(--card-foreground);
