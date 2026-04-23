@@ -162,12 +162,12 @@ html {
       url("/points.png"), url("/points.png"), url("/points.png");
     background-position-x:
       -500px,
-      right -370px,
+      right -550px,
       center;
     background-position-y:
       1%,
       40%,
-      bottom -350px;
+      bottom -480px;
     background-repeat: no-repeat, no-repeat;
     background-size:
       min(700px, 100vw) auto,

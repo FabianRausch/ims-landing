@@ -61,7 +61,7 @@ export function MetaAdsSection() {
   return (
     <section
       id="meta-ads"
-      className="py-16 md:py-24 bg-linear-to-b from-white to-background/50 scroll-mt-24"
+      className="py-16 md:py-24 bg-linear-to-b from-white to-background/90 scroll-mt-24"
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">

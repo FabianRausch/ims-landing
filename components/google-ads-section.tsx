@@ -63,7 +63,7 @@ export function GoogleAdsSection() {
   return (
     <section
       id="campanas-busqueda"
-      className="py-16 md:py-24 bg-linear-to-b from-background/50 to-white scroll-mt-24"
+      className="py-16 md:py-24 bg-linear-to-b from-background/90 to-white scroll-mt-24"
     >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
