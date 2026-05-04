@@ -150,6 +150,9 @@ export function PricingSection() {
             plan.highlighted ? "border-primary border-2 shadow-lg" : ""
           }`}
         >
+          <div className="absolute -top-4 -right-4 h-14 w-14 rounded-full bg-primary text-primary-foreground text-[11px] font-bold uppercase leading-tight flex items-center justify-center text-center shadow-md ring-2 ring-card">
+            15% off
+          </div>
           {plan.highlighted && (
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold whitespace-nowrap">
               Recomendado
