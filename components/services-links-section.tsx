@@ -3,6 +3,14 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const serviceLinks = [
   {
+    title: "Community Manager",
+    href: "/community-manager",
+    logoSrc: "/logo.png",
+    logoAlt: "Logo de Impulso Marketing Studio",
+    description:
+      "Tu marca, siempre presente. Generá conversación y fortalece tu comunidad.",
+  },
+  {
     title: "Meta Ads",
     href: "/meta-ads",
     logoSrc: "/meta.png",
@@ -18,12 +26,12 @@ const serviceLinks = [
       "Google Ads te pone frente a quienes ya están buscando comprarte.",
   },
   {
-    title: "Community Manager",
-    href: "/community-manager",
-    logoSrc: "/logo.png",
-    logoAlt: "Logo de Impulso Marketing Studio",
+    title: "Google Analytics 4 & Data Tracking",
+    href: "/data-tracking",
+    logoSrc: "/metricas.png",
+    logoAlt: "Logo de Google Analytics 4 & Data Tracking",
     description:
-      "Tu marca, siempre presente. Generá conversación y fortalece tu comunidad.",
+      "Conocé exactamente qué pasa en tu sitio web, qué campañas generan ventas y cómo se comportan tus clientes en tiempo real.",
   },
 ] as const;
 

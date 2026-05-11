@@ -37,6 +37,7 @@ export function Navbar() {
   const navLinks = [
     { href: "/meta-ads", label: "META ADS" },
     { href: "/google-ads", label: "GOOGLE ADS" },
+    { href: "/data-tracking", label: "DATA TRACKING" },
     { href: "/community-manager", label: "COMMUNITY MANAGER" },
     { href: "/#combos", label: "COMBOS" },
     { href: "/#proceso", label: "PROCESO" },
