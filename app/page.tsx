@@ -71,7 +71,7 @@ export default function Home() {
           <div className="hero__content page-width">
             <div className="hero__copy reveal-up">
               <p className="eyebrow eyebrow--light"><span /> Agencia de marketing digital · Córdoba</p>
-              <h1>Visibiliza tu marca/empresa <em>en Redes Sociales y Google.</em></h1>
+              <h1>Visibiliza tu marca/<wbr />empresa <em>en Redes Sociales y Google.</em></h1>
               <p className="hero__lead">Diseñamos estrategias de publicidad y contenido para que más personas te encuentren, confíen en vos y elijan tu negocio.</p>
               <div className="hero__actions">
                 <a className="button button--bright" href={whatsappMessage("Hola! Quiero recibir asesoría gratuita sobre los servicios de Impulso Marketing Lab.")} target="_blank" rel="noreferrer">Asesoráte gratis <ArrowUpRight size={18} /></a>
