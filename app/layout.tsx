@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -66,7 +68,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             />
           </noscript>
         ) : null}
-        {children}
+        <div className="site-shell">
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </div>
         <Analytics />
       </body>
     </html>

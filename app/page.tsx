@@ -1,67 +1,20 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 import {
   ArrowUpRight,
-  BarChart3,
   Check,
-  ChevronDown,
   ChevronRight,
   ExternalLink,
-  Instagram,
-  Menu,
-  MessageCircle,
-  MousePointerClick,
   Play,
   Send,
   Sparkles,
-  Target,
   TrendingUp,
-  Users,
-  X,
 } from "lucide-react";
-
-const whatsappBase = "https://wa.me/543547656462";
-const whatsappMessage = (message: string) => `${whatsappBase}?text=${encodeURIComponent(message)}`;
-
-const services = [
-  {
-    number: "01",
-    icon: MousePointerClick,
-    kicker: "Publicidad que convierte",
-    title: "Meta Ads",
-    description: "Campañas en Facebook e Instagram para que tu marca aparezca frente a las personas correctas, en el momento justo.",
-    href: "/meta-ads",
-    accent: "pink",
-  },
-  {
-    number: "02",
-    icon: Target,
-    kicker: "Demanda activa",
-    title: "Google Ads",
-    description: "Capturamos búsquedas de personas que ya están buscando lo que ofrecés y las llevamos directo a tu negocio.",
-    href: "/google-ads",
-    accent: "orange",
-  },
-  {
-    number: "03",
-    icon: Users,
-    kicker: "Comunidad que crece",
-    title: "Community Manager",
-    description: "Ordenamos tu presencia digital con estrategia, contenido y una voz de marca que genera conversación.",
-    href: "/community-manager",
-    accent: "violet",
-  },
-  {
-    number: "04",
-    icon: BarChart3,
-    kicker: "Datos para decidir",
-    title: "Data Tracking",
-    description: "Entendé qué campañas generan resultados, cómo se comportan tus clientes y dónde está cada oportunidad.",
-    href: "/data-tracking",
-    accent: "lime",
-  },
-];
+import { ServiceCard } from "@/components/service-card";
+import { WhatsappIcon } from "@/components/whatsapp-icon";
+import { services } from "@/lib/services";
+import { whatsappMessage } from "@/lib/whatsapp";
 
 const plans = [
   {
@@ -102,8 +55,6 @@ function scrollToContact() {
 }
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     window.alert("¡Gracias! Recibimos tu consulta. Te vamos a contactar para conocer mejor tu negocio.");
@@ -111,40 +62,6 @@ export default function Home() {
   }
 
   return (
-    <div className="site-shell">
-      <header className="site-header">
-        <div className="site-header__inner">
-          <a className="brand" href="#inicio" aria-label="Impulso Marketing Lab, inicio">
-            <span className="brand__mark-wrap"><img src="/assets/logo.png" alt="" /></span>
-            <span className="brand__wordmark">Impulso<span>Marketing Studio</span></span>
-          </a>
-
-          <nav className="desktop-nav" aria-label="Navegación principal">
-            <a href="#servicios">Servicios</a>
-            <a href="#planes">Planes</a>
-            <a href="#proceso">Cómo trabajamos</a>
-            <a href="#contacto">Contacto</a>
-          </nav>
-
-          <a className="header-cta" href={whatsappMessage("Hola! Me gustaría recibir asesoría gratuita sobre los servicios de Impulso Marketing Lab.")} target="_blank" rel="noreferrer">
-            Asesoría gratis <ArrowUpRight size={15} />
-          </a>
-
-          <button className="menu-toggle" aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
-            {menuOpen ? <X size={21} /> : <Menu size={21} />}
-          </button>
-        </div>
-        {menuOpen && (
-          <div className="mobile-menu">
-            <a href="#servicios" onClick={() => setMenuOpen(false)}>Servicios</a>
-            <a href="#planes" onClick={() => setMenuOpen(false)}>Planes</a>
-            <a href="#proceso" onClick={() => setMenuOpen(false)}>Cómo trabajamos</a>
-            <a href="#contacto" onClick={() => setMenuOpen(false)}>Contacto</a>
-            <a className="mobile-menu__cta" href={whatsappMessage("Hola! Me gustaría recibir asesoría gratuita sobre los servicios de Impulso Marketing Lab.")} target="_blank" rel="noreferrer">Asesoría gratis <ArrowUpRight size={16} /></a>
-          </div>
-        )}
-      </header>
-
       <main>
         <section className="hero" id="inicio">
           <div className="hero__texture" />
@@ -191,7 +108,7 @@ export default function Home() {
           <div className="page-width">
             <div className="section-head"><div><p className="eyebrow"><span /> Lo que hacemos</p><h2>Todo lo que tu marca necesita<br /><em>para crecer online.</em></h2></div><p className="section-head__aside">Un equipo estratégico para conectar tu negocio con las personas que ya están buscando lo que ofrecés.</p></div>
             <div className="services__grid">
-              {services.map((service) => { const Icon = service.icon; return <article className={`service-card service-card--${service.accent}`} key={service.number}><div className="service-card__top"><span>{service.number}</span><Icon size={21} strokeWidth={1.8} /></div><p className="service-card__kicker">{service.kicker}</p><h3>{service.title}</h3><p className="service-card__description">{service.description}</p><a href={service.href} className="service-card__link">Conocer servicio <ArrowUpRight size={16} /></a></article>; })}
+              {services.map((service) => <ServiceCard service={service} key={service.number} />)}
             </div>
             <div className="services__footer"><span>También podemos ayudarte con</span><b>estrategia · creatividades · métricas · optimización</b><a href="#contacto">Hablemos de tu negocio <ArrowUpRight size={16} /></a></div>
           </div>
@@ -207,11 +124,7 @@ export default function Home() {
         </section>
 
         <section className="process section-pad" id="proceso"><div className="page-width"><div className="process__intro"><p className="eyebrow"><span /> Cómo trabajamos</p><h2>Menos improvisación.<br /><em>Más impulso.</em></h2><p>Un proceso claro para que sepas qué estamos haciendo, por qué lo hacemos y cómo impacta en tu negocio.</p></div><div className="process__steps">{process.map(([number, title, description]) => <div className="process__step" key={number}><span className="process__number">{number}</span><div><h3>{title}</h3><p>{description}</p></div><ChevronRight size={19} /></div>)}</div></div></section>
-        <section className="contact section-pad" id="contacto"><div className="page-width"><div className="contact__layout"><div className="contact__heading"><p className="eyebrow"><span /> Tu próximo paso</p><h2>¿Hablamos de<br /><em>tu negocio?</em></h2><p>Contanos qué estás buscando y armamos juntos el próximo movimiento de tu marca.</p><div className="contact__direct"><a href={whatsappMessage("Hola! Quiero recibir asesoría sobre los servicios de Impulso Marketing Lab.")} target="_blank" rel="noreferrer"><MessageCircle size={19} /> Escribinos por WhatsApp <ArrowUpRight size={16} /></a><a href="mailto:impulsemkt24@gmail.com"><ExternalLink size={18} /> impulsemkt24@gmail.com</a></div></div><form className="contact-form" onSubmit={handleSubmit}><div className="form-row"><label><span>Nombre</span><input name="name" type="text" placeholder="Tu nombre" required /></label><label><span>Teléfono</span><input name="phone" type="tel" placeholder="+54 9 ..." required /></label></div><label><span>Email</span><input name="email" type="email" placeholder="tu@email.com" required /></label><label><span>¿Qué necesitás?</span><textarea name="message" rows={4} placeholder="Contanos un poco sobre tu negocio y qué te gustaría mejorar..." required /></label><div className="form-bottom"><span>Te respondemos a la brevedad.</span><button className="button button--ink" type="submit">Enviar consulta <Send size={16} /></button></div></form></div></div></section>
+        <section className="contact section-pad" id="contacto"><div className="page-width"><div className="contact__layout"><div className="contact__heading"><p className="eyebrow"><span /> Tu próximo paso</p><h2>¿Hablamos de<br /><em>tu negocio?</em></h2><p>Contanos qué estás buscando y armamos juntos el próximo movimiento de tu marca.</p><div className="contact__direct"><a href={whatsappMessage("Hola! Quiero recibir asesoría sobre los servicios de Impulso Marketing Lab.")} target="_blank" rel="noreferrer"><WhatsappIcon size={18} /> Escribinos por WhatsApp <ArrowUpRight size={16} /></a><a href="mailto:impulsemkt24@gmail.com"><ExternalLink size={18} /> impulsemkt24@gmail.com</a></div></div><form className="contact-form" onSubmit={handleSubmit}><div className="form-row"><label><span>Nombre</span><input name="name" type="text" placeholder="Tu nombre" required /></label><label><span>Teléfono</span><input name="phone" type="tel" placeholder="+54 9 ..." required /></label></div><label><span>Email</span><input name="email" type="email" placeholder="tu@email.com" required /></label><label><span>¿Qué necesitás?</span><textarea name="message" rows={4} placeholder="Contanos un poco sobre tu negocio y qué te gustaría mejorar..." required /></label><div className="form-bottom"><span>Te respondemos a la brevedad.</span><button className="button button--ink" type="submit">Enviar consulta <Send size={16} /></button></div></form></div></div></section>
       </main>
-
-      <footer className="site-footer"><div className="page-width site-footer__inner"><div><a className="brand brand--footer" href="#inicio"><span className="brand__mark-wrap"><img src="/assets/logo.png" alt="" /></span><span className="brand__wordmark">Impulso<span>Marketing Studio</span></span></a><p>Publicidad, contenido y datos para marcas que quieren crecer.</p></div><div className="footer__nav"><a href="#servicios">Servicios</a><a href="#planes">Planes</a><a href="#proceso">Proceso</a><a href="#contacto">Contacto</a></div><div className="footer__contact"><a href="tel:+543547656462">+54 3547 656462</a><a href="mailto:impulsemkt24@gmail.com">impulsemkt24@gmail.com</a><a href="https://www.instagram.com/impulsomarketingstudio" target="_blank" rel="noreferrer"><Instagram size={16} /> @impulsomarketingstudio</a></div><div className="footer__bottom"><span>© {new Date().getFullYear()} Impulso Marketing Lab</span><a href="#inicio">Volver arriba <ArrowUpRight size={14} /></a></div></div></footer>
-      <a className="whatsapp-float" href={whatsappMessage("Hola! Quiero recibir asesoría sobre los servicios de Impulso Marketing Lab.")} target="_blank" rel="noreferrer" aria-label="Contactar por WhatsApp"><MessageCircle size={22} /></a>
-    </div>
   );
 }
