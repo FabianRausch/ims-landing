@@ -13,11 +13,11 @@ export function SiteFooter() {
             <p>Publicidad, contenido y datos para marcas que quieren crecer.</p>
           </div>
           <div className="footer__nav"><Link href="/#servicios">Servicios</Link><Link href="/#planes">Planes</Link><Link href="/#proceso">Proceso</Link><Link href="/#contacto">Contacto</Link></div>
-          <div className="footer__contact"><a href="tel:+543547656462">+54 3547 656462</a><a href="mailto:impulsemkt24@gmail.com">impulsemkt24@gmail.com</a><a href="https://www.instagram.com/impulsomarketingstudio" target="_blank" rel="noreferrer"><Instagram size={16} /> @impulsomarketingstudio</a></div>
+          <div className="footer__contact"><a href="tel:+543547656462" data-event="contact_click" data-method="phone" data-cta-location="footer">+54 3547 656462</a><a href="mailto:impulsemkt24@gmail.com" data-event="contact_click" data-method="email" data-cta-location="footer">impulsemkt24@gmail.com</a><a href="https://www.instagram.com/impulsomarketingstudio" target="_blank" rel="noreferrer" data-event="contact_click" data-method="instagram" data-cta-location="footer"><Instagram size={16} /> @impulsomarketingstudio</a></div>
           <div className="footer__bottom"><span>© {new Date().getFullYear()} Impulso Marketing Lab</span><a href="#top">Volver arriba <ArrowUpRight size={14} /></a></div>
         </div>
       </footer>
-      <a className="whatsapp-float" href={whatsappMessage("Hola! Quiero recibir asesoría sobre los servicios de Impulso Marketing Lab.")} target="_blank" rel="noreferrer" aria-label="Contactar por WhatsApp"><WhatsappIcon size={26} /></a>
+      <a className="whatsapp-float" href={whatsappMessage("Hola! Quiero recibir asesoría sobre los servicios de Impulso Marketing Lab.")} target="_blank" rel="noreferrer" aria-label="Contactar por WhatsApp" data-event="whatsapp_click" data-cta-location="floating"><WhatsappIcon size={26} /></a>
     </>
   );
 }

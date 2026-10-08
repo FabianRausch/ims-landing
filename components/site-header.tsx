@@ -29,7 +29,7 @@ export function SiteHeader() {
           {navLinks.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
         </nav>
 
-        <a className="header-cta" href={ctaHref} target="_blank" rel="noreferrer">
+        <a className="header-cta" href={ctaHref} target="_blank" rel="noreferrer" data-event="whatsapp_click" data-cta-location="header">
           Asesoría gratis <ArrowUpRight size={15} />
         </a>
 
@@ -40,7 +40,7 @@ export function SiteHeader() {
       {menuOpen && (
         <div className="mobile-menu">
           {navLinks.map((link) => <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>{link.label}</Link>)}
-          <a className="mobile-menu__cta" href={ctaHref} target="_blank" rel="noreferrer">Asesoría gratis <ArrowUpRight size={16} /></a>
+          <a className="mobile-menu__cta" href={ctaHref} target="_blank" rel="noreferrer" data-event="whatsapp_click" data-cta-location="header_mobile">Asesoría gratis <ArrowUpRight size={16} /></a>
         </div>
       )}
     </header>

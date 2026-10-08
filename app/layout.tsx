@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { TrackingListener } from "@/components/tracking-listener";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -47,6 +48,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           {children}
           <SiteFooter />
         </div>
+        <TrackingListener />
         <Analytics />
       </body>
     </html>

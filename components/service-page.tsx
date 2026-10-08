@@ -42,7 +42,7 @@ export function ServicePage({ href, lead, blocks, faqs, secondaryLink, cta }: Se
             <h1>{service.title}<em>.</em></h1>
             {lead.map((paragraph) => <p className="hero__lead" key={paragraph}>{paragraph}</p>)}
             <div className="hero__actions">
-              <a className="button button--bright" href={contactHref} target="_blank" rel="noreferrer">Quiero asesoría <ArrowUpRight size={18} /></a>
+              <a className="button button--bright" href={contactHref} target="_blank" rel="noreferrer" data-event="whatsapp_click" data-cta-location="service_hero" data-service-name={service.title}>Quiero asesoría <ArrowUpRight size={18} /></a>
               <Link className="text-link text-link--light" href={secondaryLink.href}>{secondaryLink.label} <ChevronRight size={17} /></Link>
             </div>
           </div>
@@ -91,7 +91,7 @@ export function ServicePage({ href, lead, blocks, faqs, secondaryLink, cta }: Se
         <div className="page-width service-cta__inner">
           <div><p className="eyebrow eyebrow--light"><span /> Tu próximo paso</p><h2>{cta.title}</h2><p>{cta.text}</p></div>
           <div className="service-cta__actions">
-            <a className="button button--bright" href={contactHref} target="_blank" rel="noreferrer">Escribinos por WhatsApp <ArrowUpRight size={18} /></a>
+            <a className="button button--bright" href={contactHref} target="_blank" rel="noreferrer" data-event="whatsapp_click" data-cta-location="service_cta" data-service-name={service.title}>Escribinos por WhatsApp <ArrowUpRight size={18} /></a>
             <Link className="text-link text-link--light" href={secondaryLink.href}>{secondaryLink.label} <ChevronRight size={17} /></Link>
           </div>
         </div>

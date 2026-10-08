@@ -7,13 +7,13 @@ import {
   ChevronRight,
   ExternalLink,
   Play,
-  Send,
   Sparkles,
   TrendingUp,
 } from "lucide-react";
 import { ServiceCard } from "@/components/service-card";
 import { WhatsappIcon } from "@/components/whatsapp-icon";
 import { services } from "@/lib/services";
+import { trackEvent } from "@/lib/tracking";
 import { whatsappMessage } from "@/lib/whatsapp";
 
 const plans = [
@@ -57,8 +57,22 @@ function scrollToContact() {
 export default function Home() {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    window.alert("¡Gracias! Recibimos tu consulta. Te vamos a contactar para conocer mejor tu negocio.");
-    event.currentTarget.reset();
+    const data = new FormData(event.currentTarget);
+    const field = (name: string) => String(data.get(name) ?? "").trim();
+    const message = [
+      "Hola! Les escribo desde la web de Impulso Marketing Studio.",
+      "",
+      `*Nombre:* ${field("name")}`,
+      `*Teléfono:* ${field("phone")}`,
+      `*Email:* ${field("email")}`,
+      "",
+      `*Consulta:* ${field("message")}`,
+    ].join("\n");
+    trackEvent("whatsapp_form_submit", { form_name: "contacto" });
+    const url = whatsappMessage(message);
+    const whatsappWindow = window.open(url, "_blank");
+    if (whatsappWindow) whatsappWindow.opener = null;
+    else window.location.href = url;
   }
 
   return (
@@ -74,7 +88,7 @@ export default function Home() {
               <h1>Visibiliza tu marca/<wbr />empresa <em>en Redes Sociales y Google.</em></h1>
               <p className="hero__lead">Diseñamos estrategias de publicidad y contenido para que más personas te encuentren, confíen en vos y elijan tu negocio.</p>
               <div className="hero__actions">
-                <a className="button button--bright" href={whatsappMessage("Hola! Quiero recibir asesoría gratuita sobre los servicios de Impulso Marketing Lab.")} target="_blank" rel="noreferrer">Asesoráte gratis <ArrowUpRight size={18} /></a>
+                <a className="button button--bright" href={whatsappMessage("Hola! Quiero recibir asesoría gratuita sobre los servicios de Impulso Marketing Lab.")} target="_blank" rel="noreferrer" data-event="whatsapp_click" data-cta-location="hero">Asesoráte gratis <ArrowUpRight size={18} /></a>
                 <a className="text-link text-link--light" href="#servicios">Ver servicios <ChevronRight size={17} /></a>
               </div>
               <div className="hero__proof"><span className="hero__proof-avatars"><i>IM</i><i>AD</i><i>+</i></span><span>Publicidad, contenido y datos<br /><b>en una misma estrategia.</b></span></div>
@@ -120,11 +134,11 @@ export default function Home() {
         </section>
 
         <section className="plans section-pad" id="planes">
-          <div className="page-width"><div className="section-head section-head--light"><div><p className="eyebrow eyebrow--light"><span /> Elegí tu punto de partida</p><h2>Planes para cada<br /><em>momento de tu negocio.</em></h2></div><p className="section-head__aside">Podés empezar donde estás hoy y crecer cuando tu negocio esté listo.</p></div><div className="plans__grid">{plans.map((plan) => <article className={`plan-card ${plan.featured ? "plan-card--featured" : ""}`} key={plan.name}>{plan.featured && <span className="plan-card__badge">Recomendado <Sparkles size={12} /></span>}<p className="plan-card__eyebrow">{plan.eyebrow}</p><h3>{plan.name}</h3><p className="plan-card__description">{plan.description}</p><ul>{plan.features.map((feature) => <li key={feature}><Check size={15} /> {feature}</li>)}</ul><div className="plan-card__result"><small>Resultado esperado</small><strong>{plan.result}</strong></div><a className="button button--outline" href={whatsappMessage(`Hola! Me interesa conocer más sobre el plan ${plan.name}.`)} target="_blank" rel="noreferrer">Consultar plan <ArrowUpRight size={16} /></a></article>)}</div><p className="plans__note">La inversión publicitaria no está incluida en los planes. El presupuesto de anuncios se abona directamente a Meta o Google.</p></div>
+          <div className="page-width"><div className="section-head section-head--light"><div><p className="eyebrow eyebrow--light"><span /> Elegí tu punto de partida</p><h2>Planes para cada<br /><em>momento de tu negocio.</em></h2></div><p className="section-head__aside">Podés empezar donde estás hoy y crecer cuando tu negocio esté listo.</p></div><div className="plans__grid">{plans.map((plan) => <article className={`plan-card ${plan.featured ? "plan-card--featured" : ""}`} key={plan.name}>{plan.featured && <span className="plan-card__badge">Recomendado <Sparkles size={12} /></span>}<p className="plan-card__eyebrow">{plan.eyebrow}</p><h3>{plan.name}</h3><p className="plan-card__description">{plan.description}</p><ul>{plan.features.map((feature) => <li key={feature}><Check size={15} /> {feature}</li>)}</ul><div className="plan-card__result"><small>Resultado esperado</small><strong>{plan.result}</strong></div><a className="button button--outline" href={whatsappMessage(`Hola! Me interesa conocer más sobre el plan ${plan.name}.`)} target="_blank" rel="noreferrer" data-event="whatsapp_click" data-cta-location="plan" data-plan-name={plan.name}>Consultar plan <ArrowUpRight size={16} /></a></article>)}</div><p className="plans__note">La inversión publicitaria no está incluida en los planes. El presupuesto de anuncios se abona directamente a Meta o Google.</p></div>
         </section>
 
         <section className="process section-pad" id="proceso"><div className="page-width"><div className="process__intro"><p className="eyebrow"><span /> Cómo trabajamos</p><h2>Menos improvisación.<br /><em>Más impulso.</em></h2><p>Un proceso claro para que sepas qué estamos haciendo, por qué lo hacemos y cómo impacta en tu negocio.</p></div><div className="process__steps">{process.map(([number, title, description]) => <div className="process__step" key={number}><span className="process__number">{number}</span><div><h3>{title}</h3><p>{description}</p></div><ChevronRight size={19} /></div>)}</div></div></section>
-        <section className="contact section-pad" id="contacto"><div className="page-width"><div className="contact__layout"><div className="contact__heading"><p className="eyebrow"><span /> Tu próximo paso</p><h2>¿Hablamos de<br /><em>tu negocio?</em></h2><p>Contanos qué estás buscando y armamos juntos el próximo movimiento de tu marca.</p><div className="contact__direct"><a href={whatsappMessage("Hola! Quiero recibir asesoría sobre los servicios de Impulso Marketing Lab.")} target="_blank" rel="noreferrer"><WhatsappIcon size={18} /> Escribinos por WhatsApp <ArrowUpRight size={16} /></a><a href="mailto:impulsemkt24@gmail.com"><ExternalLink size={18} /> impulsemkt24@gmail.com</a></div></div><form className="contact-form" onSubmit={handleSubmit}><div className="form-row"><label><span>Nombre</span><input name="name" type="text" placeholder="Tu nombre" required /></label><label><span>Teléfono</span><input name="phone" type="tel" placeholder="+54 9 ..." required /></label></div><label><span>Email</span><input name="email" type="email" placeholder="tu@email.com" required /></label><label><span>¿Qué necesitás?</span><textarea name="message" rows={4} placeholder="Contanos un poco sobre tu negocio y qué te gustaría mejorar..." required /></label><div className="form-bottom"><span>Te respondemos a la brevedad.</span><button className="button button--ink" type="submit">Enviar consulta <Send size={16} /></button></div></form></div></div></section>
+        <section className="contact section-pad" id="contacto"><div className="page-width"><div className="contact__layout"><div className="contact__heading"><p className="eyebrow"><span /> Tu próximo paso</p><h2>¿Hablamos de<br /><em>tu negocio?</em></h2><p>Contanos qué estás buscando y armamos juntos el próximo movimiento de tu marca.</p><div className="contact__direct"><a href={whatsappMessage("Hola! Quiero recibir asesoría sobre los servicios de Impulso Marketing Lab.")} target="_blank" rel="noreferrer" data-event="whatsapp_click" data-cta-location="contact"><WhatsappIcon size={18} /> Escribinos por WhatsApp <ArrowUpRight size={16} /></a><a href="mailto:impulsemkt24@gmail.com" data-event="contact_click" data-method="email" data-cta-location="contact"><ExternalLink size={18} /> impulsemkt24@gmail.com</a></div></div><form className="contact-form" onSubmit={handleSubmit}><div className="form-row"><label><span>Nombre</span><input name="name" type="text" placeholder="Tu nombre" required /></label><label><span>Teléfono</span><input name="phone" type="tel" placeholder="+54 9 ..." required /></label></div><label><span>Email</span><input name="email" type="email" placeholder="tu@email.com" required /></label><label><span>¿Qué necesitás?</span><textarea name="message" rows={4} placeholder="Contanos un poco sobre tu negocio y qué te gustaría mejorar..." required /></label><div className="form-bottom"><span>Se abrirá WhatsApp con tu consulta lista para enviar.</span><button className="button button--ink" type="submit">Enviar por WhatsApp <WhatsappIcon size={16} /></button></div></form></div></div></section>
       </main>
   );
 }
