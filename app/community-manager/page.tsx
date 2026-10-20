@@ -29,7 +29,7 @@ export default function CommunityManagerPage() {
           text: <>En <b>Impulso Marketing Studio</b> nos ocupamos de tus redes para que vos te enfoques en lo que mejor sabés hacer: tu negocio.</>,
         },
       ]}
-      secondaryLink={{ href: "/#contacto", label: "Consultar por community manager" }}
+      secondaryLink={{ href: "/#planes-community-manager", label: "Ver planes de community manager" }}
       cta={{
         title: <>Tu marca,<br /><em>siempre presente.</em></>,
         text: "Contanos cómo es tu negocio y armamos una presencia en redes que genere conversación.",

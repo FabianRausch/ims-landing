@@ -16,14 +16,22 @@ import { services } from "@/lib/services";
 import { trackEvent } from "@/lib/tracking";
 import { whatsappMessage } from "@/lib/whatsapp";
 
-const plans = [
+type Plan = {
+  name: string;
+  eyebrow: string;
+  description: string;
+  features: string[];
+  result: string;
+  featured?: boolean;
+};
+
+const adsPlans: Plan[] = [
   {
     name: "Impulso Ads Base",
     eyebrow: "Para empezar con claridad",
     description: "Para negocios que quieren comenzar a vender con publicidad y generar sus primeras consultas.",
     features: ["Gestión de Meta Ads", "1 campaña activa", "Segmentación de público", "Optimización semanal", "Copy básico para anuncios", "Reporte mensual simple"],
     result: "Primeras consultas, visibilidad y movimiento.",
-    featured: false,
   },
   {
     name: "Impulso Ads Pro",
@@ -39,9 +47,65 @@ const plans = [
     description: "Para negocios que buscan profesionalizar su adquisición y construir un sistema de ventas.",
     features: ["Meta Ads + Google Ads", "Múltiples campañas full funnel", "Estrategia mensual personalizada", "Remarketing avanzado", "Análisis de datos", "Soporte prioritario"],
     result: "Un sistema de adquisición que crece con vos.",
-    featured: false,
   },
 ];
+
+const communityPlans: Plan[] = [
+  {
+    name: "Plan Básico",
+    eyebrow: "Para empezar en redes",
+    description: "Ideal si necesitás ordenar tu comunicación y empezar a moverte en redes.",
+    features: ["Manual de estilo", "Objetivos y estrategias", "Planner mensual", "4 posts (reels, imágenes estáticas y carrouseles)", "10 días de historias", "Análisis de estadísticas"],
+    result: "Mayor presencia, constancia y primeras interacciones con tu audiencia.",
+  },
+  {
+    name: "Plan Medio",
+    eyebrow: "El más elegido",
+    description: "Ideal para marcas que buscan mayor visibilidad y conexión con su público.",
+    features: ["Manual de estilo", "Objetivos y estrategias", "Planner mensual", "6 posts (reels, imágenes estáticas y carrouseles)", "14 días de historias", "Análisis de estadísticas"],
+    result: "Mayor alcance, interacción y crecimiento sostenido de la cuenta.",
+    featured: true,
+  },
+  {
+    name: "Plan Premium",
+    eyebrow: "Para destacar",
+    description: "Pensado para negocios que buscan contenido constante y de alto impacto.",
+    features: ["Manual de estilo", "Objetivos y estrategias", "Planner mensual", "8 posts (reels, imágenes estáticas y carrouseles)", "18 días de historias", "Análisis de estadísticas"],
+    result: "Posicionamiento de marca, crecimiento acelerado y mayor engagement.",
+  },
+];
+
+const volumeFeature = /^\d+ (?:posts(?: \(.*\))?|días de historias)$/;
+
+function PlanCard({ plan, emphasizeVolume }: { plan: Plan; emphasizeVolume?: boolean }) {
+  return (
+    <article className={`plan-card ${plan.featured ? "plan-card--featured" : ""}`}>
+      {plan.featured && <span className="plan-card__badge">Recomendado <Sparkles size={12} /></span>}
+      <p className="plan-card__eyebrow">{plan.eyebrow}</p>
+      <h3>{plan.name}</h3>
+      <p className="plan-card__description">{plan.description}</p>
+      <ul>
+        {plan.features.map((feature) => (
+          <li key={feature} className={emphasizeVolume && volumeFeature.test(feature) ? "plan-card__feature--volume" : undefined}>
+            <Check size={15} /> {feature}
+          </li>
+        ))}
+      </ul>
+      <div className="plan-card__result"><small>Resultado esperado</small><strong>{plan.result}</strong></div>
+      <a
+        className="button button--outline"
+        href={whatsappMessage(`Hola! Me interesa conocer más sobre el plan ${plan.name}.`)}
+        target="_blank"
+        rel="noreferrer"
+        data-event="whatsapp_click"
+        data-cta-location="plan"
+        data-plan-name={plan.name}
+      >
+        Consultar plan <ArrowUpRight size={16} />
+      </a>
+    </article>
+  );
+}
 
 const process = [
   ["01", "Entendemos", "Conocemos tu negocio, tu audiencia y el resultado que querés alcanzar."],
@@ -134,7 +198,38 @@ export default function Home() {
         </section>
 
         <section className="plans section-pad" id="planes">
-          <div className="page-width"><div className="section-head section-head--light"><div><p className="eyebrow eyebrow--light"><span /> Elegí tu punto de partida</p><h2>Planes para cada<br /><em>momento de tu negocio.</em></h2></div><p className="section-head__aside">Podés empezar donde estás hoy y crecer cuando tu negocio esté listo.</p></div><div className="plans__grid">{plans.map((plan) => <article className={`plan-card ${plan.featured ? "plan-card--featured" : ""}`} key={plan.name}>{plan.featured && <span className="plan-card__badge">Recomendado <Sparkles size={12} /></span>}<p className="plan-card__eyebrow">{plan.eyebrow}</p><h3>{plan.name}</h3><p className="plan-card__description">{plan.description}</p><ul>{plan.features.map((feature) => <li key={feature}><Check size={15} /> {feature}</li>)}</ul><div className="plan-card__result"><small>Resultado esperado</small><strong>{plan.result}</strong></div><a className="button button--outline" href={whatsappMessage(`Hola! Me interesa conocer más sobre el plan ${plan.name}.`)} target="_blank" rel="noreferrer" data-event="whatsapp_click" data-cta-location="plan" data-plan-name={plan.name}>Consultar plan <ArrowUpRight size={16} /></a></article>)}</div><p className="plans__note">La inversión publicitaria no está incluida en los planes. El presupuesto de anuncios se abona directamente a Meta o Google.</p></div>
+          <div className="page-width">
+            <div className="section-head section-head--light">
+              <div>
+                <p className="eyebrow eyebrow--light"><span /> Elegí tu punto de partida</p>
+                <h2>Planes para cada<br /><em>momento de tu negocio.</em></h2>
+              </div>
+              <p className="section-head__aside">Podés empezar donde estás hoy y crecer cuando tu negocio esté listo.</p>
+            </div>
+
+            <div className="plans__group" id="planes-publicidad">
+              <div className="plans__group-head">
+                <p className="eyebrow eyebrow--light"><span /> Publicidad online</p>
+                <h3>Planes de Ads</h3>
+                <p>Elegí el plan que mejor encaje con el momento de tu negocio.</p>
+              </div>
+              <div className="plans__grid">
+                {adsPlans.map((plan) => <PlanCard plan={plan} key={plan.name} />)}
+              </div>
+              <p className="plans__note">La inversión publicitaria no está incluida en los planes. El presupuesto de anuncios se abona directamente a Meta o Google.</p>
+            </div>
+
+            <div className="plans__group" id="planes-community-manager">
+              <div className="plans__group-head">
+                <p className="eyebrow eyebrow--light"><span /> Community manager</p>
+                <h3>Planes de contenido</h3>
+                <p>Elegí el volumen de contenido que mejor se adapta a tu marca.</p>
+              </div>
+              <div className="plans__grid">
+                {communityPlans.map((plan) => <PlanCard plan={plan} key={plan.name} emphasizeVolume />)}
+              </div>
+            </div>
+          </div>
         </section>
 
         <section className="process section-pad" id="proceso"><div className="page-width"><div className="process__intro"><p className="eyebrow"><span /> Cómo trabajamos</p><h2>Menos improvisación.<br /><em>Más impulso.</em></h2><p>Un proceso claro para que sepas qué estamos haciendo, por qué lo hacemos y cómo impacta en tu negocio.</p></div><div className="process__steps">{process.map(([number, title, description]) => <div className="process__step" key={number}><span className="process__number">{number}</span><div><h3>{title}</h3><p>{description}</p></div><ChevronRight size={19} /></div>)}</div></div></section>

@@ -54,7 +54,7 @@ export default function GoogleAdsPage() {
           answer: "Los pagos se gestionan desde la sección de Facturación. Dependiendo de tu país, podés pagar de forma automática (se debita de tu tarjeta tras acumular gastos) o manual (cargás saldo previamente mediante tarjeta, transferencia o proveedores locales).",
         },
       ]}
-      secondaryLink={{ href: "/#planes", label: "Ver planes de publicidad" }}
+      secondaryLink={{ href: "/#planes-publicidad", label: "Ver planes de publicidad" }}
       cta={{
         title: <>Que te encuentren<br /><em>cuando te buscan.</em></>,
         text: "Llevamos a tu negocio a las personas que ya están buscando lo que ofrecés en Google.",

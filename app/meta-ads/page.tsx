@@ -53,7 +53,7 @@ export default function MetaAdsPage() {
           answer: "Los pagos se hacen con tarjeta de crédito, débito o PayPal directamente desde la plataforma.",
         },
       ]}
-      secondaryLink={{ href: "/#planes", label: "Ver planes de publicidad" }}
+      secondaryLink={{ href: "/#planes-publicidad", label: "Ver planes de publicidad" }}
       cta={{
         title: <>¿Listo para aparecer<br /><em>donde está tu cliente?</em></>,
         text: "Armamos campañas en Facebook e Instagram pensadas para tu negocio, tu público y tu presupuesto.",
