@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ServicePage } from "@/components/service-page";
+import { adsPlans, adsPlansNote } from "@/lib/plans";
 
 export const metadata: Metadata = {
   title: "Meta Ads | Impulso Marketing Studio",
@@ -53,7 +54,14 @@ export default function MetaAdsPage() {
           answer: "Los pagos se hacen con tarjeta de crédito, débito o PayPal directamente desde la plataforma.",
         },
       ]}
-      secondaryLink={{ href: "/#planes-publicidad", label: "Ver planes de publicidad" }}
+      plans={{
+        eyebrow: "Publicidad online",
+        title: <>Planes de Ads para<br /><em>tu campaña.</em></>,
+        aside: "Elegí el plan que mejor encaje con el momento de tu negocio.",
+        items: adsPlans,
+        note: adsPlansNote,
+      }}
+      secondaryLink={{ href: "#planes", label: "Ver planes de publicidad" }}
       cta={{
         title: <>¿Listo para aparecer<br /><em>donde está tu cliente?</em></>,
         text: "Armamos campañas en Facebook e Instagram pensadas para tu negocio, tu público y tu presupuesto.",

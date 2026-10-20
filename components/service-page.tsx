@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Check, ChevronDown, ChevronRight } from "lucide-react";
+import { PlanCard } from "@/components/plan-card";
 import { ServiceCard } from "@/components/service-card";
+import type { Plan } from "@/lib/plans";
 import { services } from "@/lib/services";
 import { whatsappMessage } from "@/lib/whatsapp";
 
@@ -14,20 +16,35 @@ export type ServiceBlock = {
 
 export type ServiceFaq = { question: string; answer: string };
 
+export type ServicePlans = {
+  eyebrow: string;
+  title: ReactNode;
+  aside: string;
+  items: Plan[];
+  emphasizeVolume?: boolean;
+  note?: string;
+};
+
 type ServicePageProps = {
   href: string;
   lead: string[];
   blocks: ServiceBlock[];
+  plans?: ServicePlans;
   faqs?: ServiceFaq[];
   secondaryLink: { href: string; label: string };
   cta: { title: ReactNode; text: string };
 };
 
-export function ServicePage({ href, lead, blocks, faqs, secondaryLink, cta }: ServicePageProps) {
+export function ServicePage({ href, lead, blocks, plans, faqs, secondaryLink, cta }: ServicePageProps) {
   const service = services.find((item) => item.href === href)!;
   const Icon = service.icon;
   const otherServices = services.filter((item) => item.href !== href);
   const contactHref = whatsappMessage(`Hola! Me interesa el servicio de ${service.title}. ¿Me pueden asesorar?`);
+  const secondary = secondaryLink.href.startsWith("#") ? (
+    <a className="text-link text-link--light" href={secondaryLink.href}>{secondaryLink.label} <ChevronRight size={17} /></a>
+  ) : (
+    <Link className="text-link text-link--light" href={secondaryLink.href}>{secondaryLink.label} <ChevronRight size={17} /></Link>
+  );
 
   return (
     <main className={`service-page service-page--${service.accent}`}>
@@ -43,7 +60,7 @@ export function ServicePage({ href, lead, blocks, faqs, secondaryLink, cta }: Se
             {lead.map((paragraph) => <p className="hero__lead" key={paragraph}>{paragraph}</p>)}
             <div className="hero__actions">
               <a className="button button--bright" href={contactHref} target="_blank" rel="noreferrer" data-event="whatsapp_click" data-cta-location="service_hero" data-service-name={service.title}>Quiero asesoría <ArrowUpRight size={18} /></a>
-              <Link className="text-link text-link--light" href={secondaryLink.href}>{secondaryLink.label} <ChevronRight size={17} /></Link>
+              {secondary}
             </div>
           </div>
           <div className="service-hero__badge reveal-up reveal-up--delay" aria-hidden="true">
@@ -71,6 +88,26 @@ export function ServicePage({ href, lead, blocks, faqs, secondaryLink, cta }: Se
         </div>
       </section>
 
+      {plans && (
+        <section className="plans section-pad" id="planes">
+          <div className="page-width">
+            <div className="section-head section-head--light">
+              <div>
+                <p className="eyebrow eyebrow--light"><span /> {plans.eyebrow}</p>
+                <h2>{plans.title}</h2>
+              </div>
+              <p className="section-head__aside">{plans.aside}</p>
+            </div>
+            <div className="plans__grid">
+              {plans.items.map((plan) => (
+                <PlanCard plan={plan} key={plan.name} emphasizeVolume={plans.emphasizeVolume} />
+              ))}
+            </div>
+            {plans.note && <p className="plans__note">{plans.note}</p>}
+          </div>
+        </section>
+      )}
+
       {faqs && faqs.length > 0 && (
         <section className="process section-pad">
           <div className="page-width">
@@ -92,14 +129,14 @@ export function ServicePage({ href, lead, blocks, faqs, secondaryLink, cta }: Se
           <div><p className="eyebrow eyebrow--light"><span /> Tu próximo paso</p><h2>{cta.title}</h2><p>{cta.text}</p></div>
           <div className="service-cta__actions">
             <a className="button button--bright" href={contactHref} target="_blank" rel="noreferrer" data-event="whatsapp_click" data-cta-location="service_cta" data-service-name={service.title}>Escribinos por WhatsApp <ArrowUpRight size={18} /></a>
-            <Link className="text-link text-link--light" href={secondaryLink.href}>{secondaryLink.label} <ChevronRight size={17} /></Link>
+            {secondary}
           </div>
         </div>
       </section>
 
       <section className="services section-pad">
         <div className="page-width">
-          <div className="section-head"><div><p className="eyebrow"><span /> Otros servicios</p><h2>Sumá más impulso<br /><em>a tu estrategia.</em></h2></div><p className="section-head__aside">Publicidad, contenido y datos funcionan mejor cuando trabajan juntos.</p></div>
+          <div className="section-head"><div><p className="eyebrow"><span /> Otros servicios</p><h2>Sumá más impulso<br /><em>a tu estrategia.</em></h2></div><p className="section-head__aside">Publicidad, contenido, web y datos funcionan mejor cuando trabajan juntos.</p></div>
           <div className="services__grid services__grid--three">
             {otherServices.map((item) => <ServiceCard service={item} key={item.number} />)}
           </div>

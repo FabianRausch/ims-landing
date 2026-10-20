@@ -1,6 +1,6 @@
-import { BarChart3, MousePointerClick, Target, Users, type LucideIcon } from "lucide-react";
+import { BarChart3, LayoutTemplate, MousePointerClick, Target, Users, type LucideIcon } from "lucide-react";
 
-export type ServiceAccent = "pink" | "orange" | "violet" | "lime";
+export type ServiceAccent = "pink" | "orange" | "violet" | "lime" | "aqua";
 
 export type Service = {
   number: string;
@@ -48,5 +48,14 @@ export const services: Service[] = [
     description: "Entendé qué campañas generan resultados, cómo se comportan tus clientes y dónde está cada oportunidad.",
     href: "/data-tracking",
     accent: "lime",
+  },
+  {
+    number: "05",
+    icon: LayoutTemplate,
+    kicker: "Presencia que convierte",
+    title: "Sitios Web",
+    description: "Diseñamos landing pages y sitios de varias páginas para que tu marca se vea profesional, cargue rápido y convierta visitas en consultas.",
+    href: "/sitios-web",
+    accent: "aqua",
   },
 ];

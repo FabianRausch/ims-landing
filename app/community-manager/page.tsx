@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ServicePage } from "@/components/service-page";
+import { communityPlans } from "@/lib/plans";
 
 export const metadata: Metadata = {
   title: "Community Manager | Impulso Marketing Studio",
@@ -29,7 +30,14 @@ export default function CommunityManagerPage() {
           text: <>En <b>Impulso Marketing Studio</b> nos ocupamos de tus redes para que vos te enfoques en lo que mejor sabés hacer: tu negocio.</>,
         },
       ]}
-      secondaryLink={{ href: "/#planes-community-manager", label: "Ver planes de community manager" }}
+      plans={{
+        eyebrow: "Community manager",
+        title: <>Planes de contenido para<br /><em>tu marca.</em></>,
+        aside: "Elegí el volumen de contenido que mejor se adapta a tu marca.",
+        items: communityPlans,
+        emphasizeVolume: true,
+      }}
+      secondaryLink={{ href: "#planes", label: "Ver planes de contenido" }}
       cta={{
         title: <>Tu marca,<br /><em>siempre presente.</em></>,
         text: "Contanos cómo es tu negocio y armamos una presencia en redes que genere conversación.",
